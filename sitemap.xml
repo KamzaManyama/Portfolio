@@ -2,34 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://YOUR-DOMAIN.com/</loc>
+    <loc>https://www.maredimanyama.co.za/</loc>
     <lastmod>2026-10-01</lastmod>
     <image:image>
-      <image:loc>https://YOUR-DOMAIN.com/profile.webp</image:loc>
+      <image:loc>https://www.maredimanyama.co.za/profile.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://YOUR-DOMAIN.com/AboutMe.webp</image:loc>
+      <image:loc>https://www.maredimanyama.co.za/AboutMe.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://YOUR-DOMAIN.com/projects/invoice-ingest.webp</image:loc>
+      <image:loc>https://www.maredimanyama.co.za/projects/invoice-ingest.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://YOUR-DOMAIN.com/projects/tc-van-de-merwe.webp</image:loc>
+      <image:loc>https://www.maredimanyama.co.za/projects/tc-van-de-merwe.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://YOUR-DOMAIN.com/projects/hotel.webp</image:loc>
+      <image:loc>https://www.maredimanyama.co.za/projects/hotel.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://YOUR-DOMAIN.com/gallary/employee-of-the-month.webp</image:loc>
+      <image:loc>https://www.maredimanyama.co.za/gallary/employee-of-the-month.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://YOUR-DOMAIN.com/gallary/work-hackathon.webp</image:loc>
+      <image:loc>https://www.maredimanyama.co.za/gallary/work-hackathon.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://YOUR-DOMAIN.com/gallary/aws-summit.webp</image:loc>
+      <image:loc>https://www.maredimanyama.co.za/gallary/aws-summit.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://YOUR-DOMAIN.com/gallary/team-sessions.webp</image:loc>
+      <image:loc>https://www.maredimanyama.co.za/gallary/team-sessions.webp</image:loc>
     </image:image>
   </url>
 </urlset>
