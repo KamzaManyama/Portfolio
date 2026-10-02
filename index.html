@@ -1,277 +1,1036 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
-  <title>Maredi Manyama</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="mediaqueries.css" />
+  <title>Maredi Manyama — Software Developer in Midrand, South Africa</title>
+  <meta name="description" content="Maredi Manyama is a software developer in Midrand, South Africa, building web products with React, JavaScript and Node.js. See projects, experience and CV." />
+  <meta name="author" content="Maredi Manyama" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#ffffff" />
+
+  <!-- Replace YOUR-DOMAIN.com with the live domain here, in sitemap.xml and in robots.txt -->
+  <link rel="canonical" href="https://YOUR-DOMAIN.com/" />
+
+  <!-- Search engine verification: paste the codes from Google Search Console and Bing Webmaster Tools -->
+  <!-- <meta name="google-site-verification" content="PASTE-GOOGLE-CODE" /> -->
+  <!-- <meta name="msvalidate.01" content="PASTE-BING-CODE" /> -->
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preload" as="image" href="profile.webp" fetchpriority="high" />
+
+  <!-- Link preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Maredi Manyama" />
+  <meta property="og:locale" content="en_ZA" />
+  <meta property="og:url" content="https://YOUR-DOMAIN.com/" />
+  <meta property="og:title" content="Maredi Manyama — Software Developer in Midrand, South Africa" />
+  <meta property="og:description" content="Software developer building web products with React, JavaScript and Node.js. See projects, experience and CV." />
+  <meta property="og:image" content="https://YOUR-DOMAIN.com/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Maredi Manyama — Software Developer · QA Automation" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Maredi Manyama — Software Developer in Midrand, South Africa" />
+  <meta name="twitter:description" content="Software developer building web products with React, JavaScript and Node.js. See projects, experience and CV." />
+  <meta name="twitter:image" content="https://YOUR-DOMAIN.com/og-image.jpg" />
+
+  <!-- Structured data for search engines -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://YOUR-DOMAIN.com/#website",
+        "url": "https://YOUR-DOMAIN.com/",
+        "name": "Maredi Manyama",
+        "inLanguage": "en-ZA"
+      },
+      {
+        "@type": "ProfilePage",
+        "@id": "https://YOUR-DOMAIN.com/#profile",
+        "url": "https://YOUR-DOMAIN.com/",
+        "name": "Maredi Manyama — Software Developer in Midrand, South Africa",
+        "isPartOf": { "@id": "https://YOUR-DOMAIN.com/#website" },
+        "mainEntity": { "@id": "https://YOUR-DOMAIN.com/#person" }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://YOUR-DOMAIN.com/#person",
+        "name": "Maredi Manyama",
+        "url": "https://YOUR-DOMAIN.com/",
+        "image": "https://YOUR-DOMAIN.com/profile.webp",
+        "jobTitle": "Software Developer",
+        "description": "Software developer in Midrand, South Africa, building web products with React, JavaScript and Node.js.",
+        "email": "mailto:kmanyama009@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Midrand",
+          "addressRegion": "Gauteng",
+          "addressCountry": "ZA"
+        },
+        "worksFor": { "@type": "Organization", "name": "Mphoti Consulting" },
+        "alumniOf": { "@type": "CollegeOrUniversity", "name": "Tshwane University of Technology" },
+        "knowsAbout": ["JavaScript", "TypeScript", "React", "Redux", "Node.js", "Express", "REST APIs", "MySQL", "PostgreSQL", "Tailwind CSS", "Playwright", "Jest", "Test automation", "Technical SEO"],
+        "sameAs": [
+          "https://github.com/KamzaManyama",
+          "https://www.linkedin.com/in/maredi-manyama-711269281/"
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Tailwind CSS (built from tailwind.config.js — rebuild after adding new classes) -->
+  <link rel="stylesheet" href="tailwind.css" />
+
+  <style>
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+
+    .site-header {
+      border-bottom: 1px solid transparent;
+      transition: background-color .25s ease, border-color .25s ease;
+    }
+
+    .site-header.nav-open {
+      background: #fff;
+      border-bottom-color: #e5e5e5;
+    }
+
+    .nav-toggle-bars {
+      position: relative;
+      display: block;
+      width: 22px;
+      height: 10px;
+    }
+
+    .nav-toggle-bars span {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 1.5px;
+      background: #111;
+      transition: transform .25s ease, top .25s ease;
+    }
+
+    .nav-toggle-bars span:first-child { top: 0; }
+    .nav-toggle-bars span:last-child { top: 8.5px; }
+
+    .nav-open .nav-toggle-bars span:first-child { top: 4px; transform: rotate(45deg); }
+    .nav-open .nav-toggle-bars span:last-child { top: 4px; transform: rotate(-45deg); }
+
+    .mobile-menu {
+      max-height: calc(100vh - 72px);
+      overflow-y: auto;
+      background: #fff;
+    }
+
+    .site-header.is-scrolled {
+      background: rgba(255, 255, 255, .92);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+      border-bottom-color: #e5e5e5;
+    }
+
+    .back-to-top {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px);
+      background: #111;
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, .35);
+      transition: opacity .25s ease, transform .25s ease, background-color .25s ease, color .25s ease;
+    }
+
+    .back-to-top.is-visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      background: #fff;
+      color: #111;
+      border-color: #111;
+    }
+    body { background: #fff; color: #111; }
+
+    .hero-photo {
+      filter: grayscale(100%);
+      mix-blend-mode: multiply;
+    }
+
+    .about-photo {
+      filter: grayscale(100%) contrast(1.05);
+      mix-blend-mode: multiply;
+      transition: filter .6s ease, transform .6s ease;
+    }
+
+    .about-figure:hover .about-photo {
+      filter: grayscale(0%) contrast(1);
+      transform: scale(1.03);
+    }
+
+    .gallery-photo {
+      filter: grayscale(100%) contrast(1.05);
+      transition: filter .6s ease, transform .6s ease;
+    }
+
+    .gallery-figure:hover .gallery-photo {
+      filter: grayscale(0%) contrast(1);
+      transform: scale(1.03);
+    }
+
+    .contact-card {
+      transition: background-color .25s ease, color .25s ease;
+    }
+
+    .contact-card:hover {
+      background: #111;
+      color: #fff;
+    }
+
+    .contact-card:hover .contact-label {
+      color: #a3a3a3;
+    }
+
+    .banner-link {
+      transition: color .25s ease;
+    }
+
+    .banner-link:hover {
+      color: #fff;
+    }
+
+    .cv-button {
+      transition: background-color .25s ease, color .25s ease;
+    }
+
+    .cv-button:hover {
+      background: #111;
+      color: #fff;
+    }
+
+    .cv-arrow {
+      transition: transform .25s ease;
+    }
+
+    .cv-button:hover .cv-arrow {
+      transform: translateY(2px);
+    }
+
+    .project-shot img {
+      transition: transform .6s ease;
+    }
+
+    .project-shot:hover img {
+      transform: scale(1.03);
+    }
+
+    .soft-line {
+      background: linear-gradient(90deg, #111 0 28%, #d8d8d8 28% 100%);
+    }
+
+    .fade-up {
+      animation: fadeUp .35s ease both;
+    }
+
+    .fade-up-delay {
+      animation: fadeUp .35s .05s ease both;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .fade-up, .fade-up-delay { animation: none; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .recognition-card {
+      transition: transform .25s ease, opacity .25s ease;
+    }
+
+    .recognition-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .project-link {
+      position: relative;
+    }
+
+    .project-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0;
+      height: 1px;
+      background: #111;
+      transition: width .25s ease;
+    }
+
+    .project-link.py-2::after {
+      bottom: 5px;
+    }
+
+    .project-link:hover::after {
+      width: 100%;
+    }
+  </style>
 </head>
 
-<body>
-  <nav id="desktop-nav">
-    <div class="logo">Maredi Speel Manyama</div>
-    <div>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
-  <nav id="hamburger-nav">
-    <div class="logo">Maredi Manyama</div>
-    <div class="hamburger-menu">
-      <div class="hamburger-icon" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <div class="menu-links">
-        <li><a href="#about" onclick="toggleMenu()">About</a></li>
-        <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
-        <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-        <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-      </div>
-    </div>
-  </nav>
-  <section id="profile">
-    <div class="section__pic-container">
-      <img src="./assets/project.png" alt="Maredi speel Manyama profile picture" />
-    </div>
-    <div class="section__text">
-      <p class="section__text__p1">Hello,</p>
-      <h1 class="title">Welcome to my portfolio website!</h1>
-      <p class="section__text__p2">"I'm <b>Maredi Speel Manyama</b>,
-         a recent university graduate with a passion for Computer Sciences and a drive to learn and grow.
-        As I take my first steps into the professional world, I'm excited to explore opportunities for internships
-         and entry-level positions that will help me build on my skills and experience. This portfolio showcases my academic projects,
-          achievements, and interests, and I'm eager to share my talents with a dynamic team. Let's connect and explore how I can contribute to your organization's success!
-          and you can download my CarriculamViatae below"
-        
-        </p>
-      <div class="btn-container">
-        <button class="btn btn-color-2" onclick="window.open('./assets/CarriculamViataeOfMarediSpeelManyamaa.pdf')">
-          Download CV
-        </button>
-        
-      </div>
-     
-    </div>
-  </section>
-  <section id="about">
-    <p class="section__text__p1">Get To Know More</p>
-    <h1 class="title">About Me</h1>
-    <div class="section-container">
-     
-      <div class="about-details-container">
-        <div class="about-containers">
-          <div class="details-container">
-            <img src="./assets/experience.png" alt="Experience icon" class="icon" />
-            <h3>Experience</h3>
-            <p>Basic experience in java programming through school projects and assignments </p>
-            <p>kotlin programming  </p>
-            <p>web development programming working with TVH </p>
-          </div>
-          <div class="details-container">
-            <img src="./assets/education.png" alt="Education icon" class="icon" />
-            <h3>Education</h3>
-            <p>National senoir certificate </p>
-            <p>Diploma in Computer Sciences </p>
+<body class="font-serif antialiased">
 
-          </div>
-        </div>
-        <div class="text-container">
-          <p>
-            Hi my name is <b>Maredi Speel Manyama</b> a  recent student at tshwane university of technology, 
-Im a very passionate person when it come to the world of software development as i have ventured in 
-<b>html</b>,<b>css</b>  and <b>javascript</b> for the likeness of knowing how front-end applications are designed 
-and developed the i also looked at the backEnd part of the web development by familiarising my self with <b>java programmingt</b>, <b>mySql databases</b> to see 
-how data is stored and manipulated behind the scenes.
-          </p>
-        </div>
-      </div>
+  <!-- NAV -->
+  <header id="siteHeader" class="site-header fixed inset-x-0 top-0 z-30">
+    <div class="mx-auto flex max-w-[1120px] items-center justify-between px-6 py-5 md:px-10">
+      <a href="#" class="text-[25px] font-bold tracking-tight">maredi.</a>
+
+      <nav class="hidden items-center gap-7 text-[12px] md:flex lg:gap-9">
+        <a href="#work" class="py-3 transition-opacity hover:opacity-50">Work</a>
+        <a href="#about" class="py-3 transition-opacity hover:opacity-50">About</a>
+        <a href="#experience" class="py-3 transition-opacity hover:opacity-50">Experience</a>
+        <a href="#cv" class="py-3 transition-opacity hover:opacity-50">CV</a>
+        <a href="#contact" class="py-3 transition-opacity hover:opacity-50">Contact</a>
+      </nav>
+
+      <button
+        id="navToggle"
+        type="button"
+        class="-mr-2 flex h-11 w-11 items-center justify-center md:hidden"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mobileMenu"
+      >
+        <span class="nav-toggle-bars" aria-hidden="true"><span></span><span></span></span>
+      </button>
     </div>
-    <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" onclick="location.href='./#experience'" />
-  </section>
-  <section id="experience">
-    <p class="section__text__p1">Explore My</p>
-    <h1 class="title">Experience</h1>
-    <div class="experience-details-container">
-      <div class="about-containers">
-        <div class="details-container">
-          <h2 class="experience-sub-title">Frontend Development</h2>
-          <div class="article-container">
-            <article>
-              <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-              <div>
-                <h3>HTML</h3>
-                <p>Intermediate</p>
-              </div>
-            </article>
 
-            <article>
-              <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-              <div>
-                <h3>CSS</h3>
-                <p>Intermediate</p>
-              </div>
-            </article>
-
-            <article>
-              <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-              <div>
-                <h3>BootStrap</h3>
-                <p>Intermediate</p>
-              </div>
-            </article>
-            
-            <article>
-              <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-              <div>
-                <h3>JavaScript</h3>
-                <p>Basic</p>
-              </div>
-            </article>
-           
-            
-          </div>
-        </div>
-        <div class="details-container">
-          <h2 class="experience-sub-title">Backend Development</h2>
-          <div class="article-container">
-           
-            <article>
-              <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-              <div>
-                <h3>mySQL</h3>
-                <p>Intermediate</p>
-              </div>
-            </article>
-            
-            <article>
-              <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-              <div>
-                <h3>java </h3>
-                <p>Intermediate</p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </div>
-    </div>
-    <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" onclick="location.href='./#projects'" />
-  </section>
-  <section id="projects">
-    <p class="section__text__p1">Browse My Recent</p>
-    <h1 class="title">Projects</h1>
-    <div class="experience-details-container">
-      <div class="about-containers">
-        <div class="details-container color-container">
-          <div class="article-container">
-            <img src="./assets/project-1.png" alt="Project 1" class="project-img" />
-          </div>
-          <h2 class="experience-sub-title project-title">Weather application</h2>
-          <div class="btn-container">
-            <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/KamzaManyama/weather-application'">
-              Github
-            </button>
-            <button class="btn btn-color-2 project-btn" onclick="location.href='https://kamzamanyama.github.io/weather-application/'">
-              Live Demo
-            </button>
-          </div>
-        </div>
-        <div class="details-container color-container">
-          <div class="article-container">
-            <img src="./assets/project-2.png" alt="Project 2" class="project-img" />
-          </div>
-          <h2 class="experience-sub-title project-title">iacademy</h2>
-          <div class="btn-container">
-            <button class="btn btn-color-2 project-btn" onclick="location.href='#'">
-              Github
-            </button>
-            <button class="btn btn-color-2 project-btn" onclick="location.href='#'">
-              Live Demo
-            </button>
-          </div>
-        </div>
-
-        <div class="details-container color-container">
-          <div class="article-container">
-            <img src="./assets/pxfuel.jpg" alt="Project 2" class="project-img" />
-          </div>
-          <h2 class="experience-sub-title project-title">ElectronichealthApp</h2>
-          <div class="btn-container">
-            <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/KamzaManyama/Portfolio'">
-              Github
-            </button>
-            <button class="btn btn-color-2 project-btn" onclick="location.href='https://kamzamanyama.github.io/mediBook/'">
-              Live Demo
-            </button>
-          </div>
-        </div>
-        <div class="details-container color-container">
-          <div class="article-container">
-            <img src="./assets/spazashop.png" alt="Project 2" class="project-img" />
-          </div>
-          <h2 class="experience-sub-title project-title">mamazala spaza</h2>
-          <div class="btn-container">
-            <button class="btn btn-color-2 project-btn" onclick="location.href='#'">
-              Github
-            </button>
-            <button class="btn btn-color-2 project-btn" onclick="location.href='#'">
-              Live Demo
-            </button>
-          </div>
-        </div>
-       
-      </div>
-    </div>
-    <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" onclick="location.href='./#contact'" />
-  </section>
-  <section id="contact">
-    <p class="section__text__p1">Get in Touch</p>
-    <h1 class="title">Contact Me</h1>
-    <div class="contact-info-upper-container">
-      <div class="contact-info-container">
-        <img src="./assets/email.png" alt="Email icon" class="icon contact-icon email-icon" />
-        <p><a href="kmanyama009@gmail.com">kmanyama009@gmail.com</a></p>
-      </div>
-      <div class="contact-info-container">
-        <img src="./assets/linkedin.png" alt="LinkedIn icon" class="icon contact-icon" 
-        onclick="location.href='https://www.linkedin.com/in/kamogelo-manyama-711269281/'"/>
-        <p><a href="">LinkedIn</a></p>
-      </div>
-
-      <div class="contact-info-container">
-          <img src="./assets/github.png" alt="My Github profile" class="icon"
-            onclick="location.href='https://github.com/KamzaManyama'" />
-            <p><a href="">Github</a></p>
-      </div>
-
-    </div>
-  </section>
-  <footer>
-    <nav>
-      <div class="nav-links-container">
-        
+    <nav id="mobileMenu" class="mobile-menu md:hidden" hidden>
+      <div class="mx-auto max-w-[1120px] px-6 pb-6">
+        <a href="#work" class="block border-t border-neutral-200 py-4 text-[22px] tracking-[-0.01em]">Work</a>
+        <a href="#about" class="block border-t border-neutral-200 py-4 text-[22px] tracking-[-0.01em]">About</a>
+        <a href="#experience" class="block border-t border-neutral-200 py-4 text-[22px] tracking-[-0.01em]">Experience</a>
+        <a href="#cv" class="block border-t border-neutral-200 py-4 text-[22px] tracking-[-0.01em]">CV</a>
+        <a href="#contact" class="block border-y border-neutral-200 py-4 text-[22px] tracking-[-0.01em]">Contact</a>
       </div>
     </nav>
+  </header>
 
-    <div class="footer-area">
-      <div class="footer-copyright-text">
-         <p> 
-          Copyright © 2024  Manyama Maredi Speel All Rights Reserved. </p> 
+  <main>
+
+    <!-- HERO -->
+    <section class="min-h-[680px] border-b border-neutral-200">
+      <div class="mx-auto grid min-h-[680px] max-w-[1120px] grid-cols-1 items-center px-6 pt-20 md:grid-cols-2 md:px-10 md:pt-10">
+
+        <!-- INTRO -->
+        <div class="relative z-10 pb-8 md:pb-0">
+          <p class="fade-up mb-7 text-[11px] uppercase tracking-[0.2em] text-neutral-500">
+            Software Developer · QA Automation
+          </p>
+
+          <h1 class="fade-up max-w-[520px] text-[38px] leading-[1.08] tracking-[-0.025em] sm:text-[46px] md:text-[48px]">
+            Maredi Manyama is a Software Developer building digital products in South Africa.
+          </h1>
+
+          <p class="fade-up-delay mt-7 max-w-[430px] text-[14px] leading-6 text-neutral-600">
+            I build scalable web applications with React and Node.js, and back them with
+            automated end-to-end testing so they hold up in production.
+          </p>
+        </div>
+
+        <!-- PORTRAIT -->
+        <div class="relative flex h-[390px] items-end justify-center overflow-hidden md:h-[570px]">
+          <div class="absolute bottom-0 left-1/2 h-[360px] w-[360px] -translate-x-1/2 rounded-full bg-neutral-100 md:h-[500px] md:w-[500px]"></div>
+
+          <img
+            src="profile.webp"
+            alt="Portrait of Maredi Manyama"
+            width="500"
+            height="500"
+            fetchpriority="high"
+            class="hero-photo relative z-10 h-full w-full object-contain object-bottom"
+          />
+        </div>
       </div>
-  </div>
-  </footer>
-  <script src="script.js"></script>
-</body>
+    </section>
 
+    <!-- RECOGNITION / SELECTED WORK STRIP -->
+    <section id="work" class="border-b border-neutral-200">
+      <div class="mx-auto grid max-w-[1120px] grid-cols-1 gap-10 px-6 py-12 sm:grid-cols-3 md:px-10">
+
+        <a href="#invoiceingest" class="recognition-card group">
+          <div class="mb-5 text-[25px] leading-none">I</div>
+          <h2 class="text-[14px] leading-5">Invoice Ingest</h2>
+          <p class="mt-2 max-w-[260px] text-[11px] leading-5 text-neutral-500">
+            Invoice management with South African VAT validation and approval workflows.
+          </p>
+          <span class="mt-3 block text-[10px] uppercase tracking-[0.12em] text-neutral-400">
+            Finance · Concept
+          </span>
+        </a>
+
+        <a href="#hotel" class="recognition-card group">
+          <div class="mb-5 text-[25px] leading-none">H</div>
+          <h2 class="text-[14px] leading-5">Hotel Management System</h2>
+          <p class="mt-2 max-w-[260px] text-[11px] leading-5 text-neutral-500">
+            Hotel booking site and staff portal for reception, housekeeping and managers.
+          </p>
+          <span class="mt-3 block text-[10px] uppercase tracking-[0.12em] text-neutral-400">
+            Hospitality · Concept
+          </span>
+        </a>
+
+        <a href="#tcvandemerwe" class="recognition-card group">
+          <div class="mb-5 text-[25px] leading-none">T</div>
+          <h2 class="text-[14px] leading-5">TC Van de Merwe</h2>
+          <p class="mt-2 max-w-[260px] text-[11px] leading-5 text-neutral-500">
+            Trucking and logistics platform showcasing fleet services and freight booking options.
+          </p>
+          <span class="mt-3 block text-[10px] uppercase tracking-[0.12em] text-neutral-400">
+            Logistics · Concept
+          </span>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="overflow-x-clip border-b border-neutral-200">
+      <div class="mx-auto grid max-w-[1120px] gap-12 px-6 py-20 md:grid-cols-[.85fr_1.15fr] md:px-10">
+        <div class="flex flex-col">
+          <p class="text-[10px] uppercase tracking-[0.2em] text-neutral-400">About</p>
+
+          <figure class="about-figure relative mt-10 flex max-w-[420px] flex-1 flex-col md:max-w-none">
+            <div class="absolute -right-8 -top-8 h-40 w-40 rounded-full bg-neutral-100"></div>
+
+            <div class="relative flex-1 overflow-hidden bg-neutral-100">
+              <img
+                src="AboutMe.webp"
+                alt="Maredi Manyama smiling beside the AWS mascot at the AWS Summit"
+                loading="lazy"
+                class="about-photo aspect-[3/5] w-full object-cover object-[50%_20%] md:absolute md:inset-0 md:aspect-auto md:h-full md:object-center"
+              />
+            </div>
+
+            <figcaption class="mt-5 flex items-center gap-3 text-[10px] uppercase tracking-[0.18em] text-neutral-400">
+              <span class="soft-line block h-px w-10"></span>
+              At the AWS Summit
+            </figcaption>
+          </figure>
+        </div>
+
+        <div>
+          <p class="max-w-[720px] text-[25px] leading-[1.3] tracking-[-0.015em] md:text-[31px]">
+            I'm Maredi, a software developer from Midrand who likes taking real problems
+            and turning them into software people can actually use.
+          </p>
+
+          <p class="mt-7 max-w-[650px] text-[14px] leading-7 text-neutral-600">
+            I work at Mphoti Consulting, a consultancy that places me with its clients. I
+            joined as an intern in 2024 and became a full-time junior developer in 2025. I'm
+            also completing an Advanced Diploma in Computer Science at Tshwane University of
+            Technology.
+          </p>
+
+          <p class="mt-5 max-w-[650px] text-[14px] leading-7 text-neutral-600">
+            Through Mphoti I've built features for high-traffic betting platforms at Sunbet
+            and PantherBet, and automated end-to-end testing with Playwright at e4. Having
+            worked on both sides, I care as much about whether software holds up as about
+            how it gets built.
+          </p>
+
+          <p class="mt-5 max-w-[650px] text-[14px] leading-7 text-neutral-600">
+            I also build complete products end to end, like Invoice Ingest, an invoice
+            management system with South African VAT built in. I work mainly with JavaScript,
+            React and Node.js, and I enjoy the whole path from the first idea to a working product.
+          </p>
+
+          <p class="mt-5 max-w-[650px] text-[14px] leading-7 text-neutral-600">
+            Right now I'm learning React Native, accessibility and performance testing. Longer
+            term, I want to build and own a South African tech product that measurably improves
+            people's lives.
+          </p>
+
+          <div class="mt-8 grid max-w-[650px] grid-cols-2 gap-y-4 text-[12px] sm:grid-cols-1">
+            <div>
+              <p class="text-neutral-400">Frontend</p>
+              <p class="mt-1">React · JavaScript · TypeScript · Tailwind CSS · Redux · Bootstrap</p>
+            </div>
+            <div>
+              <p class="text-neutral-400">Backend</p>
+              <p class="mt-1">Node.js · Express · REST APIs · MySQL · PostgreSQL</p>
+            </div>
+            <div>
+              <p class="text-neutral-400">Quality</p>
+              <p class="mt-1">Playwright · Jest · E2E · Regression testing</p>
+            </div>
+            <div>
+              <p class="text-neutral-400">Tools</p>
+              <p class="mt-1">Git · GitHub Actions · Azure DevOps · Jira</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BACKGROUND -->
+    <section id="background" class="bg-[#111] text-white">
+      <div class="mx-auto grid max-w-[1120px] gap-12 px-6 py-20 md:grid-cols-[.75fr_1.25fr] md:px-10">
+        <div>
+          <p class="text-[10px] uppercase tracking-[0.2em] text-neutral-400">Background</p>
+        </div>
+
+        <dl class="grid gap-10 sm:grid-cols-3">
+          <div>
+            <dt class="text-[10px] uppercase tracking-[0.18em] text-neutral-400">Education</dt>
+            <dd class="mt-3 text-[21px] leading-[1.25] tracking-[-0.01em]">Diploma in Computer Science</dd>
+            <dd class="mt-2 text-[12px] leading-5 text-neutral-400">Tshwane University of Technology (TUT). Advanced Diploma in progress.</dd>
+          </div>
+
+          <div>
+            <dt class="text-[10px] uppercase tracking-[0.18em] text-neutral-400">Experience</dt>
+            <dd class="mt-3 text-[21px] leading-[1.25] tracking-[-0.01em]">2+ years</dd>
+            <dd class="mt-2 text-[12px] leading-5 text-neutral-400">Professional experience at Mphoti Consulting since August 2024. Building software since 2023.</dd>
+          </div>
+
+          <div>
+            <dt class="text-[10px] uppercase tracking-[0.18em] text-neutral-400">Based in</dt>
+            <dd class="mt-3 text-[21px] leading-[1.25] tracking-[-0.01em]">Midrand, South Africa</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="mx-auto max-w-[1120px] px-6 py-20 md:px-10">
+        <div class="mb-12">
+          <p class="text-[10px] uppercase tracking-[0.2em] text-neutral-400">Experience</p>
+          <h2 class="mt-3 text-[30px] tracking-[-0.02em]">Where I've worked.</h2>
+        </div>
+
+        <div class="border-y border-neutral-200">
+
+          <article class="grid gap-x-10 gap-y-3 py-8 md:grid-cols-[200px_1fr]">
+            <div>
+              <p class="text-[11px] text-neutral-500">Aug 2024 — Present</p>
+              <p class="mt-1 text-[10px] uppercase tracking-[0.12em] text-neutral-400">Full-time · Consultancy</p>
+            </div>
+
+            <div>
+              <h3 class="text-[21px]">Junior Software Developer</h3>
+              <p class="mt-1 text-[12px]">Mphoti Consulting</p>
+              <p class="mt-3 max-w-[640px] text-[12px] leading-5 text-neutral-500">
+                Mphoti is a consultancy, and my work there has been for its clients. I joined as
+                a Software Developer intern in August 2024, building frontend features in
+                JavaScript, HTML5, CSS3 and React, debugging and testing, and contributing to UI
+                improvements. I became a full-time junior developer in June 2025. I'm currently
+                between client engagements and working on Mphoti's internal projects.
+              </p>
+              <p class="mt-3 text-[11px] text-neutral-400">React · JavaScript · MySQL · Git</p>
+
+              <p class="mt-10 text-[10px] uppercase tracking-[0.18em] text-neutral-400">Client engagements through Mphoti</p>
+
+              <div class="mt-4 divide-y divide-neutral-200 border-t border-neutral-200">
+                <div class="grid gap-x-8 gap-y-2 py-6 sm:grid-cols-[150px_1fr]">
+                  <div>
+                    <p class="text-[11px] text-neutral-500">Mar 2026 — Jul 2026</p>
+                    <p class="mt-1 text-[10px] uppercase tracking-[0.12em] text-neutral-400">Hybrid · Johannesburg</p>
+                  </div>
+                  <div>
+                    <h4 class="text-[16px]">Automation Engineer</h4>
+                    <p class="mt-1 text-[12px]">e4 Strategic</p>
+                    <p class="mt-3 max-w-[560px] text-[12px] leading-5 text-neutral-500">
+                      Contributed to the E4 Automation initiative within the Cancellation Value
+                      Stream, delivering manual and automated testing. Built and maintained
+                      end-to-end automation frameworks in Playwright, ran functional, regression
+                      and integration testing, logged defects with clear reproduction steps, and
+                      validated business requirements with developers, business analysts and QA.
+                    </p>
+                    <p class="mt-3 text-[11px] text-neutral-400">Playwright · JavaScript · TypeScript · CI/CD</p>
+                  </div>
+                </div>
+                <div class="grid gap-x-8 gap-y-2 py-6 sm:grid-cols-[150px_1fr]">
+                  <div>
+                    <p class="text-[11px] text-neutral-500">Mar 2026 — Apr 2026</p>
+                    <p class="mt-1 text-[10px] uppercase tracking-[0.12em] text-neutral-400">Remote · Johannesburg</p>
+                  </div>
+                  <div>
+                    <h4 class="text-[16px]">SEO Consultant</h4>
+                    <p class="mt-1 text-[12px]">PantherBet</p>
+                    <p class="mt-3 max-w-[560px] text-[12px] leading-5 text-neutral-500">
+                      SEO content designer and author for PantherBet's digital marketing. Did
+                      keyword research, applied on-page SEO, wrote website and promotional content,
+                      and tracked content performance with the marketing and product teams. Also
+                      built dynamic SEO handlers in Node.js that render page-specific metadata and
+                      structured data for the betting platform.
+                    </p>
+                    <p class="mt-3 text-[11px] text-neutral-400">SEO · Node.js · React · Schema markup</p>
+                  </div>
+                </div>
+                <div class="grid gap-x-8 gap-y-2 py-6 sm:grid-cols-[150px_1fr]">
+                  <div>
+                    <p class="text-[11px] text-neutral-500">May 2025 — Feb 2026</p>
+                    <p class="mt-1 text-[10px] uppercase tracking-[0.12em] text-neutral-400">On-site · Johannesburg</p>
+                  </div>
+                  <div>
+                    <h4 class="text-[16px]">Junior Software Developer</h4>
+                    <p class="mt-1 text-[12px]">Sunbet</p>
+                    <p class="mt-3 max-w-[560px] text-[12px] leading-5 text-neutral-500">
+                      Developed and maintained core gaming and betting platforms in a high-traffic
+                      environment. Built full-stack features, troubleshot and resolved technical
+                      issues to keep the platform stable, and worked with cross-functional teams to
+                      deliver within business and compliance requirements.
+                    </p>
+                    <p class="mt-3 text-[11px] text-neutral-400">React · JavaScript · Tailwind CSS · Node.js</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- BANNER -->
+    <section class="bg-[#111] text-white">
+      <div class="mx-auto flex max-w-[1120px] flex-col gap-8 px-6 py-20 md:flex-row md:items-end md:justify-between md:px-10">
+        <div>
+          <p class="text-[10px] uppercase tracking-[0.2em] text-neutral-400">Availability</p>
+          <p class="mt-4 text-[32px] leading-[1.12] tracking-[-0.025em] md:text-[46px]">
+            Available with two weeks' notice.
+          </p>
+          <p class="mt-4 text-[14px] leading-6 text-neutral-400">
+            Open to new roles, freelance work and collaborations.
+          </p>
+        </div>
+
+        <a href="#contact" class="banner-link inline-flex shrink-0 items-center gap-3 py-3 text-[10px] uppercase tracking-[0.2em] text-neutral-400">
+          Get in touch
+          <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+            <path d="M1 6h9M6.5 2.5 10 6 6.5 9.5" />
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- SELECTED PROJECTS -->
+    <section id="projects" class="border-b border-neutral-200">
+      <div class="mx-auto max-w-[1120px] px-6 py-20 md:px-10">
+        <div class="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p class="text-[10px] uppercase tracking-[0.2em] text-neutral-400">Selected work</p>
+            <h2 class="mt-3 text-[30px] tracking-[-0.02em]">Things I've built.</h2>
+          </div>
+          <p class="text-[11px] text-neutral-400">All solo builds · Source code available on request</p>
+        </div>
+
+        <div class="divide-y divide-neutral-200 border-y border-neutral-200">
+
+          <article id="invoiceingest" class="grid gap-x-10 gap-y-6 py-10 md:grid-cols-[80px_1fr_1fr] md:items-start">
+            <span class="text-[11px] text-neutral-400">01</span>
+
+            <a href="https://invoice-ingest-server-kappa.vercel.app/" target="_blank" rel="noreferrer" class="project-shot block overflow-hidden border border-neutral-200 bg-neutral-100">
+              <img
+                src="projects/invoice-ingest.webp"
+                alt="Invoq invoice management sign-in page"
+                loading="lazy"
+                class="aspect-[16/10] w-full object-cover object-top"
+              />
+            </a>
+
+            <div>
+              <p class="mb-2 text-[10px] uppercase tracking-[0.18em] text-neutral-400">Concept build</p>
+              <h3 class="text-[21px]">Invoice Ingest</h3>
+              <p class="mt-2 text-[12px] leading-5 text-neutral-500">
+                A full-stack invoice management system built for a working client, live as
+                Invoq. It ingests supplier invoices from CSV files, validates South African VAT
+                rules and removes duplicates.
+              </p>
+
+              <dl class="mt-6 flex gap-10">
+                <div>
+                  <dd class="text-[25px] leading-none tracking-[-0.01em]">3</dd>
+                  <dt class="mt-2 text-[10px] uppercase tracking-[0.18em] text-neutral-400">User roles</dt>
+                </div>
+                <div>
+                  <dd class="text-[25px] leading-none tracking-[-0.01em]">15%</dd>
+                  <dt class="mt-2 text-[10px] uppercase tracking-[0.18em] text-neutral-400">VAT applied automatically</dt>
+                </div>
+              </dl>
+
+              <dl class="mt-6 space-y-5 text-[12px] leading-5">
+                <div>
+                  <dt class="text-[10px] uppercase tracking-[0.18em] text-neutral-400">Market relevance</dt>
+                  <dd class="mt-2 text-neutral-600">
+                    Addresses a real operational pain point for South African SMEs and finance
+                    teams: manual, error-prone invoice reconciliation. It has compliance with
+                    local VAT rules built in, a gap most generic invoicing tools don't cover.
+                  </dd>
+                </div>
+                <div>
+                  <dt class="text-[10px] uppercase tracking-[0.18em] text-neutral-400">Why I built it</dt>
+                  <dd class="mt-2 text-neutral-600">
+                    I wanted a full-stack project that went beyond CRUD and forced me to work with
+                    real business rules: South African VAT logic, deduplication and automated
+                    notifications, the kind of constraints I'd face on a client engagement.
+                  </dd>
+                </div>
+                <div>
+                  <dt class="text-[10px] uppercase tracking-[0.18em] text-neutral-400">What it covers</dt>
+                  <dd class="mt-2 text-neutral-600">
+                    CSV invoice ingestion, VAT validation, duplicate removal, multi-user approval
+                    workflows, MySQL storage and Gmail alerts after each run.
+                  </dd>
+                </div>
+              </dl>
+
+              <div class="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-neutral-200 pt-4">
+                <p class="text-[11px] text-neutral-400">Node.js · Express · MySQL · Gmail API · Tailwind CSS</p>
+                <a href="https://invoice-ingest-server-kappa.vercel.app/" target="_blank" rel="noreferrer" class="project-link py-2 text-[12px]">View project</a>
+              </div>
+            </div>
+          </article>
+
+          <article id="hotel" class="grid gap-x-10 gap-y-6 py-10 md:grid-cols-[80px_1fr_1fr] md:items-start">
+            <span class="text-[11px] text-neutral-400">02</span>
+
+            <a href="https://hotel-fronr-end.vercel.app/" target="_blank" rel="noreferrer" class="project-shot block overflow-hidden border border-neutral-200 bg-neutral-100">
+              <img
+                src="projects/hotel.webp"
+                alt="Grand Hotel demo homepage"
+                loading="lazy"
+                class="aspect-[16/10] w-full object-cover object-top"
+              />
+            </a>
+
+            <div>
+              <p class="mb-2 text-[10px] uppercase tracking-[0.18em] text-neutral-400">Concept build</p>
+              <h3 class="text-[21px]">Hotel Management System</h3>
+              <p class="mt-2 text-[12px] leading-5 text-neutral-500">
+                A concept hotel management system with a guest-facing booking site and a staff
+                portal. Grand Hotel is a made-up brand used to demonstrate it.
+              </p>
+
+              <dl class="mt-6 flex gap-10">
+                <div>
+                  <dd class="text-[25px] leading-none tracking-[-0.01em]">4</dd>
+                  <dt class="mt-2 text-[10px] uppercase tracking-[0.18em] text-neutral-400">Staff roles</dt>
+                </div>
+                <div>
+                  <dd class="text-[25px] leading-none tracking-[-0.01em]">15</dd>
+                  <dt class="mt-2 text-[10px] uppercase tracking-[0.18em] text-neutral-400">Pages</dt>
+                </div>
+              </dl>
+
+              <dl class="mt-6 space-y-5 text-[12px] leading-5">
+                <div>
+                  <dt class="text-[10px] uppercase tracking-[0.18em] text-neutral-400">What it covers</dt>
+                  <dd class="mt-2 text-neutral-600">
+                    Room browsing and availability checks, reservations, booking lookup, dining,
+                    add-ons such as early check-in and airport transfers, and staff dashboards
+                    for reception, housekeeping, maintenance and management.
+                  </dd>
+                </div>
+              </dl>
+
+              <div class="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-neutral-200 pt-4">
+                <p class="text-[11px] text-neutral-400">HTML · CSS · JavaScript · REST API</p>
+                <a href="https://hotel-fronr-end.vercel.app/" target="_blank" rel="noreferrer" class="project-link py-2 text-[12px]">View project</a>
+              </div>
+            </div>
+          </article>
+
+          <article id="tcvandemerwe" class="grid gap-x-10 gap-y-6 py-10 md:grid-cols-[80px_1fr_1fr] md:items-start">
+            <span class="text-[11px] text-neutral-400">03</span>
+
+            <a href="https://tc-van-de-merwe.vercel.app/" target="_blank" rel="noreferrer" class="project-shot block overflow-hidden border border-neutral-200 bg-neutral-100">
+              <img
+                src="projects/tc-van-de-merwe.webp"
+                alt="TC Van de Merwe Logistics homepage"
+                loading="lazy"
+                class="aspect-[16/10] w-full object-cover object-top"
+              />
+            </a>
+
+            <div>
+              <p class="mb-2 text-[10px] uppercase tracking-[0.18em] text-neutral-400">Concept build</p>
+              <h3 class="text-[21px]">TC Van de Merwe</h3>
+              <p class="mt-2 text-[12px] leading-5 text-neutral-500">
+                A concept website for a trucking and logistics company, showcasing fleet
+                services and freight booking options.
+              </p>
+
+              <dl class="mt-6 space-y-5 text-[12px] leading-5">
+                <div>
+                  <dt class="text-[10px] uppercase tracking-[0.18em] text-neutral-400">Market relevance</dt>
+                  <dd class="mt-2 text-neutral-600">
+                    Serves the logistics and freight sector, where clients evaluate providers on
+                    visible fleet capacity and ease of booking. The site is structured to shorten
+                    that decision path.
+                  </dd>
+                </div>
+                <div>
+                  <dt class="text-[10px] uppercase tracking-[0.18em] text-neutral-400">Why I built it</dt>
+                  <dd class="mt-2 text-neutral-600">
+                    Logistics is an industry I hadn't designed for before, and I wanted the
+                    challenge of presenting a fairly technical, operations-heavy business in a way
+                    that's simple and credible to a non-technical client.
+                  </dd>
+                </div>
+              </dl>
+
+              <div class="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-neutral-200 pt-4">
+                <p class="text-[11px] text-neutral-400">HTML · Tailwind CSS · JavaScript</p>
+                <a href="https://tc-van-de-merwe.vercel.app/" target="_blank" rel="noreferrer" class="project-link py-2 text-[12px]">View project</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CV -->
+    <section id="cv" class="border-b border-neutral-200 bg-neutral-50">
+      <div class="mx-auto grid max-w-[1120px] gap-12 px-6 py-20 md:grid-cols-[.75fr_1.25fr] md:px-10">
+        <div>
+          <p class="text-[10px] uppercase tracking-[0.2em] text-neutral-400">Curriculum vitae</p>
+
+          <div class="mt-8 flex max-w-[360px] items-center gap-6 border border-neutral-200 bg-white p-6">
+            <svg class="h-24 w-24 shrink-0" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+              <g clip-path="url(#reader_appicon_64_grayscale__clip0_2_253)">
+                <path d="M5.66065 0H26.3393C29.4585 0 32 2.54152 32 5.66065V25.5307C32 28.6498 29.4585 31.1913 26.3393 31.1913H5.66065C2.54152 31.1913 0 28.6498 0 25.5307V5.66065C0 2.54152 2.54152 0 5.66065 0Z" fill="#808080"/>
+                <path d="M25.6462 18.0794C24.1444 16.4621 19.9856 17.1552 19.0614 17.2707C17.6173 15.8845 16.6354 14.2094 16.2888 13.6318C16.8087 12.0722 17.1552 10.4549 17.213 8.83753C17.213 7.39349 16.6354 5.83392 15.0181 5.83392C14.4404 5.83392 13.9206 6.18049 13.6318 6.64259C12.9386 7.85558 13.2274 10.2816 14.3249 12.7653C13.6895 14.6137 12.7654 17.213 11.4946 19.3502C9.81951 19.9855 6.29604 21.6029 5.94947 23.4513C5.83395 23.9711 6.00723 24.491 6.41156 24.8953C6.8159 25.2419 7.33575 25.4152 7.85561 25.4152C9.99279 25.4152 12.0722 22.4693 13.5163 19.9278C14.7293 19.5235 16.6354 18.9458 18.5415 18.5993C20.7942 20.5632 22.7581 20.852 23.7978 20.852C25.1841 20.852 25.704 20.2744 25.8773 19.7545C26.1661 19.1769 26.0506 18.5415 25.6462 18.0794ZM24.1444 19.0614C24.0867 19.4657 23.5668 19.87 22.6426 19.639C21.5451 19.3502 20.5632 18.8303 19.6968 18.1372C20.4477 18.0216 22.1228 17.8484 23.3358 18.0794C23.7978 18.1949 24.2599 18.426 24.1444 19.0614ZM14.4982 7.16244C14.6137 6.98916 14.787 6.87363 14.9603 6.87363C15.4802 6.87363 15.5957 7.50901 15.5957 8.02887C15.5379 9.24187 15.2491 10.5126 14.9025 11.6101C14.0361 9.29963 14.1516 7.6823 14.4982 7.16244ZM14.3827 18.3682C14.8448 17.444 15.4802 15.8267 15.7112 15.1336C16.2311 16 17.0975 17.0397 17.5596 17.5596C17.5596 17.5596 15.769 17.9061 14.3827 18.3682ZM10.9747 20.6787C9.58846 22.8736 8.25994 24.2599 7.50904 24.2599C7.39351 24.2599 7.27799 24.2022 7.16247 24.1444C6.98918 24.0289 6.93142 23.8556 6.98918 23.6245C7.16247 22.8159 8.66427 21.7184 10.9747 20.6787Z" fill="white"/>
+              </g>
+              <defs>
+                <clipPath id="reader_appicon_64_grayscale__clip0_2_253"><rect width="32" height="31.1913" fill="white"/></clipPath>
+              </defs>
+            </svg>
+
+            <span class="min-w-0">
+              <span class="block break-words text-[14px] leading-5">Maredi-Manyama-CV.pdf</span>
+              <span class="mt-2 block text-[10px] uppercase tracking-[0.18em] text-neutral-400">PDF document</span>
+            </span>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="max-w-[620px] text-[25px] leading-[1.3] tracking-[-0.015em] md:text-[31px]">
+            The full story, on a page you can keep.
+          </h2>
+
+          <p class="mt-6 max-w-[560px] text-[14px] leading-7 text-neutral-600">
+            Experience, education, technical skills and further projects, in one
+            document for recruiters and teams who want the detail.
+          </p>
+
+          <div class="mt-9 flex flex-wrap items-center gap-x-6 gap-y-4">
+            <a
+              href="myCV/MarediManyama_CV.pdf"
+              download="Maredi-Manyama-CV.pdf"
+              class="cv-button inline-flex items-center gap-3 border border-neutral-900 px-6 py-3 text-[12px] uppercase tracking-[0.14em]"
+            >
+              Download CV
+              <svg class="cv-arrow h-3 w-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+                <path d="M6 1v8M2.5 6 6 9.5 9.5 6M1.5 11h9" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" class="border-b border-neutral-200">
+      <div class="mx-auto max-w-[1120px] px-6 py-20 md:px-10">
+        <div class="mb-12">
+          <p class="text-[10px] uppercase tracking-[0.2em] text-neutral-400">Gallery</p>
+          <h2 class="mt-3 text-[30px] tracking-[-0.02em]">Beyond the code.</h2>
+        </div>
+
+        <div class="grid grid-cols-2 gap-x-5 gap-y-10 lg:grid-cols-4 lg:gap-x-8">
+          <figure class="gallery-figure">
+            <div class="overflow-hidden bg-neutral-100">
+              <img
+                src="gallary/employee-of-the-month.webp"
+                alt="Maredi Manyama receiving the Uyashisa Employee of the Month trophy"
+                loading="lazy"
+                class="gallery-photo aspect-[3/4] w-full object-cover"
+              />
+            </div>
+            <figcaption class="mt-4 flex items-center gap-3 text-[10px] uppercase tracking-[0.18em] text-neutral-400">
+              <span class="soft-line block h-px w-8 shrink-0"></span>
+              Uyashisa Award
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-figure ">
+            <div class="overflow-hidden bg-neutral-100">
+              <img
+                src="gallary/work-hackathon.webp"
+                alt="A team gathered around a flip chart during a work hackathon"
+                loading="lazy"
+                class="gallery-photo aspect-[3/4] w-full object-cover"
+              />
+            </div>
+            <figcaption class="mt-4 flex items-center gap-3 text-[10px] uppercase tracking-[0.18em] text-neutral-400">
+              <span class="soft-line block h-px w-8 shrink-0"></span>
+              Work hackathon
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-figure">
+            <div class="overflow-hidden bg-neutral-100">
+              <img
+                src="gallary/aws-summit.webp"
+                alt="Maredi Manyama standing with the AWS mascot at the AWS Summit"
+                loading="lazy"
+                class="gallery-photo aspect-[3/4] w-full object-cover"
+              />
+            </div>
+            <figcaption class="mt-4 flex items-center gap-3 text-[10px] uppercase tracking-[0.18em] text-neutral-400">
+              <span class="soft-line block h-px w-8 shrink-0"></span>
+              AWS Summit
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-figure ">
+            <div class="overflow-hidden bg-neutral-100">
+              <img
+                src="gallary/team-sessions.webp"
+                alt="A team working around a table in a meeting room, laptop in the foreground"
+                loading="lazy"
+                class="gallery-photo aspect-[3/4] w-full object-cover"
+              />
+            </div>
+            <figcaption class="mt-4 flex items-center gap-3 text-[10px] uppercase tracking-[0.18em] text-neutral-400">
+              <span class="soft-line block h-px w-8 shrink-0"></span>
+              Team sessions
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="mx-auto max-w-[1120px] px-6 py-24 md:px-10">
+        <p class="text-[10px] uppercase tracking-[0.2em] text-neutral-400">Contact</p>
+
+        <h2 class="mt-8 max-w-[700px] text-[38px] leading-[1.08] tracking-[-0.025em] md:text-[52px]">
+          Have a problem worth turning into software?
+        </h2>
+
+        <div class="mt-14 grid border-l border-t border-neutral-200 sm:grid-cols-2 lg:grid-cols-4">
+          <a href="mailto:kmanyama009@gmail.com" class="contact-card flex flex-col border-b border-r border-neutral-200 p-6">
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true">
+              <rect x="2.5" y="5" width="19" height="14" rx="1.5" />
+              <path d="m3 6.5 9 7 9-7" />
+            </svg>
+            <span class="contact-label mt-8 text-[10px] uppercase tracking-[0.18em] text-neutral-400">Email</span>
+            <span class="mt-2 break-words text-[14px]">kmanyama009@gmail.com</span>
+          </a>
+
+          <a href="tel:+27720746800" class="contact-card flex flex-col border-b border-r border-neutral-200 p-6">
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true">
+              <rect x="6.5" y="2.5" width="11" height="19" rx="2" />
+              <path d="M10.5 18.5h3" />
+            </svg>
+            <span class="contact-label mt-8 text-[10px] uppercase tracking-[0.18em] text-neutral-400">Phone</span>
+            <span class="mt-2 break-words text-[14px]">072 074 6800</span>
+          </a>
+
+          <a href="https://github.com/KamzaManyama" target="_blank" rel="noreferrer" class="contact-card flex flex-col border-b border-r border-neutral-200 p-6">
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+            </svg>
+            <span class="contact-label mt-8 text-[10px] uppercase tracking-[0.18em] text-neutral-400">GitHub</span>
+            <span class="mt-2 break-words text-[14px]">KamzaManyama</span>
+          </a>
+
+          <a href="https://www.linkedin.com/in/maredi-manyama-711269281/" target="_blank" rel="noreferrer" class="contact-card flex flex-col border-b border-r border-neutral-200 p-6">
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>
+            <span class="contact-label mt-8 text-[10px] uppercase tracking-[0.18em] text-neutral-400">LinkedIn</span>
+            <span class="mt-2 break-words text-[14px]">Maredi Manyama</span>
+          </a>
+        </div>
+
+        <div class="mt-16 flex flex-wrap justify-between gap-5 border-t border-neutral-200 pt-5 text-[11px] text-neutral-500">
+          <span>© <span id="currentYear">2026</span> Maredi Manyama</span>
+          <span>Midrand, South Africa</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- BACK TO TOP -->
+  <a
+    href="#"
+    id="backToTop"
+    aria-label="Back to top"
+    class="back-to-top fixed bottom-6 right-6 z-30 flex h-11 w-11 items-center justify-center md:bottom-8 md:right-8"
+  >
+    <svg class="h-3.5 w-3.5" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+      <path d="M6 11V2M2.5 5.5 6 2l3.5 3.5" />
+    </svg>
+  </a>
+
+  <script>
+    (function () {
+      var header = document.getElementById('siteHeader');
+      var toTop = document.getElementById('backToTop');
+
+      function onScroll() {
+        var y = window.scrollY || document.documentElement.scrollTop;
+        header.classList.toggle('is-scrolled', y > 10);
+        toTop.classList.toggle('is-visible', y > 600);
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      toTop.addEventListener('click', function (e) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+      var navToggle = document.getElementById('navToggle');
+      var mobileMenu = document.getElementById('mobileMenu');
+
+      function setMenu(open) {
+        mobileMenu.hidden = !open;
+        header.classList.toggle('nav-open', open);
+        navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      }
+
+      navToggle.addEventListener('click', function () {
+        setMenu(mobileMenu.hidden);
+      });
+
+      mobileMenu.addEventListener('click', function (e) {
+        if (e.target.closest('a')) setMenu(false);
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') setMenu(false);
+      });
+
+      window.addEventListener('resize', function () {
+        if (window.innerWidth >= 768) setMenu(false);
+      });
+    })();
+  </script>
+</body>
 </html>
