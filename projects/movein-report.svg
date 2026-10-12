@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="400" viewBox="0 0 640 400" fill="none">
+  <rect width="640" height="400" fill="#F7F6F2"/>
+  <rect x="48" y="48" width="544" height="304" rx="8" fill="#FFF" stroke="#E7E5DF"/>
+  <text x="80" y="91" fill="#73716B" font-family="Arial, sans-serif" font-size="12" letter-spacing="2">RENTAL ROOM INSPECTION</text>
+  <text x="80" y="127" fill="#20201E" font-family="Arial, sans-serif" font-size="23" font-weight="600">MoveIn Report</text>
+  <rect x="80" y="153" width="214" height="164" rx="4" fill="#F2F0EA"/>
+  <path d="M104 279V220L187 175L270 220V279H104Z" stroke="#79766E" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M125 279V235H169V279M190 222H213V246H190V222ZM225 222H248V246H225V222Z" stroke="#79766E" stroke-width="3"/>
+  <rect x="326" y="153" width="234" height="164" rx="4" fill="#FFF" stroke="#E7E5DF"/>
+  <text x="350" y="181" fill="#20201E" font-family="Arial, sans-serif" font-size="13" font-weight="600">Inspection notes</text>
+  <path d="M352 204L358 210L369 198M352 237L358 243L369 231M352 270L358 276L369 264" stroke="#586B54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M382 204H526M382 237H526M382 270H500" stroke="#D7D5CF" stroke-width="2" stroke-linecap="round"/>
+  <rect x="453" y="290" width="84" height="22" rx="3" fill="#20201E"/>
+  <text x="466" y="305" fill="#FFF" font-family="Arial, sans-serif" font-size="10" letter-spacing="1">PDF REPORT</text>
+</svg>
