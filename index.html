@@ -237,6 +237,19 @@
       transform: scale(1.03);
     }
 
+    /* Mobile-first apps: the phone is the image, no frame or background */
+    .project-phone img { filter: drop-shadow(0 14px 22px rgba(0, 0, 0, .12)); }
+
+    .phone-note {
+      display: block;
+      margin-top: 12px;
+      text-align: center;
+      font-size: 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: #a3a3a3;
+    }
+
     .soft-line {
       background: linear-gradient(90deg, #111 0 28%, #d8d8d8 28% 100%);
     }
@@ -264,6 +277,89 @@
 
     .recognition-card:hover {
       transform: translateY(-4px);
+    }
+
+    /* Page dots under the project list */
+    .work-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 32px;
+    }
+
+    .work-dots[hidden],
+    #projectList > article[hidden] { display: none; }
+
+    /* Scroll animations (classes are added by JS, so the page still works without it) */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .8s cubic-bezier(.2, .7, .2, 1), transform .8s cubic-bezier(.2, .7, .2, 1);
+      transition-delay: var(--reveal-delay, 0ms);
+    }
+
+    .reveal-wipe {
+      clip-path: inset(0 0 100% 0);
+      transition: clip-path 1.1s cubic-bezier(.7, 0, .2, 1);
+      transition-delay: var(--reveal-delay, 0ms);
+    }
+
+    .reveal-line {
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 1.2s cubic-bezier(.7, 0, .2, 1);
+      transition-delay: var(--reveal-delay, 0ms);
+    }
+
+    .reveal.is-visible { opacity: 1; transform: none; }
+    .reveal-wipe.is-visible { clip-path: inset(0 0 0 0); }
+    .reveal-line.is-visible { transform: scaleX(1); }
+
+    /* Projects fade in when switching pages */
+    .project-page-in {
+      animation: projectIn .6s cubic-bezier(.2, .7, .2, 1) both;
+      animation-delay: var(--reveal-delay, 0ms);
+    }
+
+    @keyframes projectIn {
+      from { opacity: 0; transform: translateX(24px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    /* Slow drift on the hero circle */
+    .hero-circle { animation: heroFloat 9s ease-in-out infinite; }
+
+    @keyframes heroFloat {
+      0%, 100% { transform: translate(-50%, 0) scale(1); }
+      50% { transform: translate(-50%, -10px) scale(1.02); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal, .reveal-wipe, .reveal-line { opacity: 1; transform: none; clip-path: none; transition: none; }
+      .project-page-in, .hero-circle { animation: none; }
+    }
+
+    .work-dot {
+      width: 6px;
+      height: 6px;
+      padding: 0;
+      border: 0;
+      border-radius: 999px;
+      background: #d4d4d4;
+      cursor: pointer;
+      transition: width .25s ease, background-color .25s ease;
+    }
+
+    .work-dot:hover { background: #a3a3a3; }
+
+    .work-dot[aria-current="true"] {
+      width: 20px;
+      background: #111;
+    }
+
+    .work-dot:focus-visible {
+      outline: 1px solid #111;
+      outline-offset: 3px;
     }
 
     .project-link {
@@ -353,7 +449,7 @@
 
         <!-- PORTRAIT -->
         <div class="relative flex h-[390px] items-end justify-center overflow-hidden md:h-[570px]">
-          <div class="absolute bottom-0 left-1/2 h-[360px] w-[360px] -translate-x-1/2 rounded-full bg-neutral-100 md:h-[500px] md:w-[500px]"></div>
+          <div class="hero-circle absolute bottom-0 left-1/2 h-[360px] w-[360px] -translate-x-1/2 rounded-full bg-neutral-100 md:h-[500px] md:w-[500px]"></div>
 
           <img
             src="profile.webp"
@@ -393,14 +489,14 @@
           </span>
         </a>
 
-        <a href="#tcvandemerwe" class="recognition-card group">
-          <div class="mb-5 text-[25px] leading-none">T</div>
-          <h2 class="text-[14px] leading-5">TC Van de Merwe</h2>
+        <a href="#jobslip" class="recognition-card group">
+          <div class="mb-5 text-[25px] leading-none">J</div>
+          <h2 class="text-[14px] leading-5">JobSlip</h2>
           <p class="mt-2 max-w-[260px] text-[11px] leading-5 text-neutral-500">
-            Trucking and logistics platform showcasing fleet services and freight booking options.
+            Job cards, quotes and invoices for South African tradespeople, sent as PDFs on WhatsApp.
           </p>
           <span class="mt-3 block text-[10px] uppercase tracking-[0.12em] text-neutral-400">
-            Logistics · Concept
+            Small business tool · Live project
           </span>
         </a>
 
@@ -639,49 +735,49 @@
           <p class="text-[11px] text-neutral-400">Client and personal projects</p>
         </div>
 
-        <div class="divide-y divide-neutral-200 border-y border-neutral-200">
+        <div id="projectList" class="divide-y divide-neutral-200 border-y border-neutral-200">
 
-          <article id="inkwazidigital" class="grid gap-x-10 gap-y-6 py-10 md:grid-cols-[80px_1fr_1fr] md:items-start">
+          <article id="randroute" class="grid gap-x-10 gap-y-6 py-10 md:grid-cols-[80px_1fr_1fr] md:items-start">
             <span class="text-[11px] text-neutral-400">01</span>
 
-            <a href="https://inkwazidigital.vercel.app/index.html" target="_blank" rel="noreferrer" class="project-shot block overflow-hidden border border-neutral-200 bg-neutral-100">
+            <a href="https://randroute-two.vercel.app/" target="_blank" rel="noreferrer" class="project-shot project-phone block">
               <img
-                src="/projects/inkwazi-project.png"
-                alt="Hero image from the Inkwazi Digital website"
+                src="projects/randroute-phone.webp"
+                alt="RandRoute dashboard showing budget insights from uploaded bank statements"
                 loading="lazy"
-                class="aspect-[16/10] w-full object-cover object-top"
+                class="aspect-[16/10] w-full object-contain"
               />
+              <span class="phone-note">Mobile-first app · best on your phone</span>
             </a>
 
             <div>
-              <p class="mb-2 text-[10px] uppercase tracking-[0.18em] text-neutral-400">Live client project · Website revamp</p>
-              <h3 class="text-[21px]">Inkwazi Digital</h3>
+              <p class="mb-2 text-[10px] uppercase tracking-[0.18em] text-neutral-400">Live app · Personal build</p>
+              <h3 class="text-[21px]">RandRoute</h3>
               <p class="mt-2 text-[12px] leading-5 text-neutral-500">
-                A refreshed website for Inkwazi Digital, a business compliance consultancy
-                based in KwaMhlanga. It introduces the business and makes its support easier
-                to explore for entrepreneurs and business owners.
+                A budgeting app that helps people upload bank statement PDFs, review their
+                spending patterns, and plan a more realistic monthly budget.
               </p>
 
               <dl class="mt-6 space-y-5 text-[12px] leading-5">
                 <div>
                   <dt class="text-[10px] uppercase tracking-[0.18em] text-neutral-400">Project focus</dt>
                   <dd class="mt-2 text-neutral-600">
-                    Give the consultancy a clear online presence and help potential clients
-                    understand its CIPC, SARS, labour and Central Supplier Database support.
+                    Make personal finance easier to understand by turning uploaded statement data
+                    into clear insights without requiring live banking access.
                   </dd>
                 </div>
                 <div>
                   <dt class="text-[10px] uppercase tracking-[0.18em] text-neutral-400">What I delivered</dt>
                   <dd class="mt-2 text-neutral-600">
-                    A responsive business website with a clear service overview, project
-                    showcase and direct contact options.
+                    An upload flow, transaction categorisation review, and a simple dashboard
+                    focused on spending visibility and budget planning.
                   </dd>
                 </div>
               </dl>
 
               <div class="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-neutral-200 pt-4">
-                <p class="text-[11px] text-neutral-400">Website revamp · Business compliance · KwaMhlanga</p>
-                <a href="https://inkwazidigital.vercel.app/index.html" target="_blank" rel="noreferrer" class="project-link py-2 text-[12px]">View live website</a>
+                <p class="text-[11px] text-neutral-400">PDF import · Spending insights · Budgeting</p>
+                <a href="https://randroute-two.vercel.app/" target="_blank" rel="noreferrer" class="project-link py-2 text-[12px]">View live app</a>
               </div>
             </div>
           </article>
@@ -689,13 +785,14 @@
           <article id="moveinreport" class="grid gap-x-10 gap-y-6 py-10 md:grid-cols-[80px_1fr_1fr] md:items-start">
             <span class="text-[11px] text-neutral-400">02</span>
 
-            <a href="https://movein-report.vercel.app/" target="_blank" rel="noreferrer" class="project-shot block overflow-hidden border border-neutral-200 bg-neutral-100">
+            <a href="https://movein-report.vercel.app/" target="_blank" rel="noreferrer" class="project-shot project-phone block">
               <img
-                src="projects/MoveIn-Report22.png"
-                alt="Moving boxes in a sunlit room"
+                src="projects/movein-report-phone.webp"
+                alt="MoveIn Report on a phone: Record your room before it costs you"
                 loading="lazy"
-                class="aspect-[16/10] w-full object-cover object-top"
+                class="aspect-[16/10] w-full object-contain"
               />
+              <span class="phone-note">Mobile-first app · best on your phone</span>
             </a>
 
             <div>
@@ -731,8 +828,56 @@
             </div>
           </article>
 
-          <article id="tcvandemerwe" class="grid gap-x-10 gap-y-6 py-10 md:grid-cols-[80px_1fr_1fr] md:items-start">
+          <article id="jobslip" class="grid gap-x-10 gap-y-6 py-10 md:grid-cols-[80px_1fr_1fr] md:items-start">
             <span class="text-[11px] text-neutral-400">03</span>
+
+            <a href="https://jobslip-zeta.vercel.app/" target="_blank" rel="noreferrer" class="project-shot project-phone block">
+              <img
+                src="projects/jobslip.webp"
+                alt="JobSlip dashboard on a phone, showing jobs and monthly revenue"
+                loading="lazy"
+                class="aspect-[16/10] w-full object-contain"
+              />
+              <span class="phone-note">Mobile-first app · best on your phone</span>
+            </a>
+
+            <div>
+              <p class="mb-2 text-[10px] uppercase tracking-[0.18em] text-neutral-400">Live project · Personal build</p>
+              <h3 class="text-[21px]">JobSlip</h3>
+              <p class="mt-2 text-[12px] leading-5 text-neutral-500">
+                A mobile-first app that helps South African tradespeople turn a job into a
+                professional job card, quote or invoice, and send it to the customer as a PDF
+                on WhatsApp.
+              </p>
+
+              <dl class="mt-6 space-y-5 text-[12px] leading-5">
+                <div>
+                  <dt class="text-[10px] uppercase tracking-[0.18em] text-neutral-400">Why I built it</dt>
+                  <dd class="mt-2 text-neutral-600">
+                    Many tradespeople run their business from their phone and WhatsApp. I wanted
+                    to give them a quick way to paperwork a job on site and get paid, without
+                    desktop accounting software.
+                  </dd>
+                </div>
+                <div>
+                  <dt class="text-[10px] uppercase tracking-[0.18em] text-neutral-400">What it covers</dt>
+                  <dd class="mt-2 text-neutral-600">
+                    Customers, jobs and quotes, invoices with VAT and banking details, and
+                    recorded payments. Before and after photos stay on the phone, and the app
+                    can be installed to the home screen.
+                  </dd>
+                </div>
+              </dl>
+
+              <div class="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-neutral-200 pt-4">
+                <p class="text-[11px] text-neutral-400">React · Supabase · PDF generation · PWA</p>
+                <a href="https://jobslip-zeta.vercel.app/" target="_blank" rel="noreferrer" class="project-link py-2 text-[12px]">View live project</a>
+              </div>
+            </div>
+          </article>
+
+          <article id="tcvandemerwe" class="grid gap-x-10 gap-y-6 py-10 md:grid-cols-[80px_1fr_1fr] md:items-start">
+            <span class="text-[11px] text-neutral-400">04</span>
 
             <a href="https://tc-van-de-merwe.vercel.app/" target="_blank" rel="noreferrer" class="project-shot block overflow-hidden border border-neutral-200 bg-neutral-100">
               <img
@@ -777,7 +922,53 @@
             </div>
           </article>
 
+          <article id="inkwazidigital" class="grid gap-x-10 gap-y-6 py-10 md:grid-cols-[80px_1fr_1fr] md:items-start">
+            <span class="text-[11px] text-neutral-400">05</span>
+
+            <a href="https://inkwazidigital.vercel.app/index.html" target="_blank" rel="noreferrer" class="project-shot block overflow-hidden border border-neutral-200 bg-neutral-100">
+              <img
+                src="projects/inkwazi-project.webp"
+                alt="Hero image from the Inkwazi Digital website"
+                loading="lazy"
+                class="aspect-[16/10] w-full object-cover object-top"
+              />
+            </a>
+
+            <div>
+              <p class="mb-2 text-[10px] uppercase tracking-[0.18em] text-neutral-400">Live client project · Website revamp</p>
+              <h3 class="text-[21px]">Inkwazi Digital</h3>
+              <p class="mt-2 text-[12px] leading-5 text-neutral-500">
+                A refreshed website for Inkwazi Digital, a business compliance consultancy
+                based in KwaMhlanga. It introduces the business and makes its support easier
+                to explore for entrepreneurs and business owners.
+              </p>
+
+              <dl class="mt-6 space-y-5 text-[12px] leading-5">
+                <div>
+                  <dt class="text-[10px] uppercase tracking-[0.18em] text-neutral-400">Project focus</dt>
+                  <dd class="mt-2 text-neutral-600">
+                    Give the consultancy a clear online presence and help potential clients
+                    understand its CIPC, SARS, labour and Central Supplier Database support.
+                  </dd>
+                </div>
+                <div>
+                  <dt class="text-[10px] uppercase tracking-[0.18em] text-neutral-400">What I delivered</dt>
+                  <dd class="mt-2 text-neutral-600">
+                    A responsive business website with a clear service overview, project
+                    showcase and direct contact options.
+                  </dd>
+                </div>
+              </dl>
+
+              <div class="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-neutral-200 pt-4">
+                <p class="text-[11px] text-neutral-400">Website revamp · Business compliance · KwaMhlanga</p>
+                <a href="https://inkwazidigital.vercel.app/index.html" target="_blank" rel="noreferrer" class="project-link py-2 text-[12px]">View live website</a>
+              </div>
+            </div>
+          </article>
+
         </div>
+        <div id="projectDots" class="work-dots" role="group" aria-label="Choose project page"></div>
       </div>
     </section>
 
@@ -1015,6 +1206,120 @@
       window.addEventListener('resize', function () {
         if (window.innerWidth >= 768) setMenu(false);
       });
+
+      // Scroll animations: elements fade up (or wipe in) as they enter the screen
+      var motionOk = 'IntersectionObserver' in window &&
+        !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var EFFECTS = ['reveal', 'reveal-wipe', 'reveal-line'];
+
+      var revealObserver = motionOk && new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var el = entry.target;
+          revealObserver.unobserve(el);
+          // Fully clipped children can't be detected on their own, so they start with their parent
+          var group = [el].concat(Array.prototype.slice.call(el.querySelectorAll('.reveal-wipe')));
+          group.forEach(function (item) { item.classList.add('is-visible'); });
+          // Once finished, drop the classes so hover effects work normally again
+          var delay = parseInt(el.style.getPropertyValue('--reveal-delay'), 10) || 0;
+          setTimeout(function () {
+            group.forEach(function (item) {
+              item.classList.remove('is-visible');
+              EFFECTS.forEach(function (c) { item.classList.remove(c); });
+              item.style.removeProperty('--reveal-delay');
+            });
+          }, delay + 1300);
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+      function reveal(selector, effect, stagger) {
+        if (!motionOk) return;
+        document.querySelectorAll(selector).forEach(function (el, i) {
+          el.classList.add(effect || 'reveal');
+          if (stagger) el.style.setProperty('--reveal-delay', (i * stagger) + 'ms');
+          if (effect !== 'reveal-wipe') revealObserver.observe(el);
+        });
+      }
+
+      // Section headings and intros
+      reveal('section .mb-12, #projects .mb-12, #contact > div > p, #contact h2');
+      reveal('#background > div > div:first-child, section.bg-\\[\\#111\\]:not(#background) > div > *', 'reveal', 120);
+      // Groups that come in one after another
+      reveal('#work .recognition-card', 'reveal', 120);
+      reveal('#about > div > div:first-child > p, #about figure', 'reveal', 150);
+      reveal('#about > div > div:last-child > *', 'reveal', 90);
+      reveal('#background dl > div', 'reveal', 120);
+      reveal('#experience article', 'reveal', 100);
+      reveal('#cv > div > div', 'reveal', 150);
+      reveal('#gallery figure', 'reveal', 110);
+      reveal('#contact .contact-card', 'reveal', 90);
+      // Projects: text fades up, screenshot wipes open from the top
+      reveal('#projectList > article');
+      reveal('#projectList .project-shot', 'reveal-wipe');
+
+      // Project list: show 3 projects per page, dots switch pages
+      var PER_PAGE = 3;
+      var projectsSection = document.getElementById('projects');
+      var projectDotsWrap = document.getElementById('projectDots');
+      var projects = Array.prototype.slice.call(document.querySelectorAll('#projectList > article'));
+      var projectPages = Math.ceil(projects.length / PER_PAGE);
+      var projectDots = [];
+
+      var currentProjectPage = -1;
+
+      function showProjectPage(page) {
+        var changed = currentProjectPage !== -1 && page !== currentProjectPage;
+        currentProjectPage = page;
+        projects.forEach(function (article, i) {
+          var show = Math.floor(i / PER_PAGE) === page;
+          article.hidden = !show;
+          article.classList.remove('project-page-in');
+          if (show && changed && motionOk) {
+            void article.offsetWidth; // restart the animation
+            article.style.setProperty('--reveal-delay', ((i % PER_PAGE) * 110) + 'ms');
+            article.classList.add('project-page-in');
+          }
+        });
+        projectDots.forEach(function (dot, i) {
+          dot.setAttribute('aria-current', i === page ? 'true' : 'false');
+        });
+      }
+
+      for (var p = 0; p < projectPages; p++) {
+        var pDot = document.createElement('button');
+        pDot.type = 'button';
+        pDot.className = 'work-dot';
+        pDot.setAttribute('aria-label', 'Show projects page ' + (p + 1));
+        pDot.addEventListener('click', (function (page) {
+          return function () {
+            showProjectPage(page);
+            projectsSection.scrollIntoView({ behavior: 'smooth' });
+          };
+        })(p));
+        projectDotsWrap.appendChild(pDot);
+        projectDots.push(pDot);
+      }
+      projectDotsWrap.hidden = projectPages < 2;
+
+      // Links like #jobslip open the page that holds that project first
+      function openProjectFromHash(hash) {
+        var index = projects.findIndex(function (a) { return '#' + a.id === hash; });
+        if (index === -1) return false;
+        showProjectPage(Math.floor(index / PER_PAGE));
+        projects[index].scrollIntoView({ behavior: 'smooth' });
+        return true;
+      }
+
+      document.addEventListener('click', function (e) {
+        var link = e.target.closest('a[href^="#"]');
+        if (link && openProjectFromHash(link.getAttribute('href'))) {
+          e.preventDefault();
+          history.replaceState(null, '', link.getAttribute('href'));
+        }
+      });
+
+      showProjectPage(0);
+      if (location.hash) openProjectFromHash(location.hash);
     })();
   </script>
 </body>

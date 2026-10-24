@@ -3,7 +3,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://www.maredimanyama.co.za/</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-10-24</lastmod>
     <image:image>
       <image:loc>https://www.maredimanyama.co.za/profile.webp</image:loc>
     </image:image>
@@ -14,7 +14,13 @@
       <image:loc>https://www.maredimanyama.co.za/projects/tc-van-de-merwe.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://www.maredimanyama.co.za/projects/movein-report.svg</image:loc>
+      <image:loc>https://www.maredimanyama.co.za/projects/movein-report-phone.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.maredimanyama.co.za/projects/randroute-phone.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.maredimanyama.co.za/projects/jobslip.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.maredimanyama.co.za/gallary/employee-of-the-month.webp</image:loc>
