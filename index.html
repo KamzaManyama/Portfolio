@@ -186,7 +186,7 @@
         "@type": "WebSite",
         "@id": "https://www.maredimanyama.co.za/#inkwazidigital",
         "name": "Inkwazi Digital",
-        "url": "https://inkwazidigital.vercel.app/",
+        "url": "https://inkwazidigital.co.za/",
         "image": "https://www.maredimanyama.co.za/projects/inkwazi-project.webp",
         "description": "Client website for a business compliance consultancy and digital solutions provider in KwaMhlanga.",
         "creator": {
@@ -312,6 +312,61 @@
       .about-caption { position: absolute; top: 100%; left: 0; }
     }
 
+    .demo-login {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border: 1px dashed #d4d4d4;
+      font-size: 12px;
+      line-height: 1.9;
+      color: #525252;
+    }
+
+    .demo-login .demo-label {
+      font-size: 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: #a3a3a3;
+    }
+
+    .demo-login code {
+      margin-left: 6px;
+      padding: 1px 6px;
+      background: #f3f3f1;
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 11.5px;
+      color: #111;
+      user-select: all;
+    }
+
+    .demo-login a { display: inline-block; margin-top: 4px; color: #111; }
+
+    .project-note {
+      margin-top: 10px;
+      font-size: 11px;
+      color: #737373;
+    }
+
+    /* Gallery on black so it stands apart from the white sections around it */
+    .gallery-dark { background: #111; color: #fff; }
+    .gallery-dark .hl-index::after { background: rgba(255, 255, 255, .6); }
+    .gallery-dark .hl-kicker { color: #8a8a8a; }
+    .gallery-dark .hl-body { color: #a3a3a3; }
+    .gallery-dark .hl-list li { color: #e5e5e5; }
+    .gallery-dark .hl-list li::marker { color: #8a8a8a; }
+    .gallery-dark .hl-links a { color: #fff; }
+    .gallery-dark .hl-links a::before { color: #8a8a8a; }
+    .gallery-dark .project-link::after { background: #fff; }
+    .gallery-dark .hl-photo { background: #1c1c1c; }
+    .gallery-dark .hl-meta dt { color: #8a8a8a; }
+    .gallery-dark .hl-counter { color: #a3a3a3; }
+    .gallery-dark .hl-arrow { color: #a3a3a3; }
+    .gallery-dark .hl-arrow:hover { color: #fff; }
+    .gallery-dark .hl-arrow:focus-visible { outline-color: #fff; }
+
+    @media (max-width: 767px) {
+      .gallery-dark .hl-controls { border-top-color: #2a2a2a; }
+    }
+
     /* Patterns on the black bands */
     .pattern-dots, .pattern-rings { position: relative; overflow: hidden; isolation: isolate; }
     .pattern-dots > *, .pattern-rings > * { position: relative; z-index: 1; }
@@ -373,46 +428,45 @@
       .pattern-dots::before, .pattern-rings::before { animation: none; }
     }
 
-    @media (min-width: 768px) { .cv-text { align-self: center; } }
-
-    /* CV illustration */
-    .cv-art { margin: 32px 0 0; max-width: 440px; }
-    .cv-art img { display: block; width: 100%; height: auto; transition: transform .6s ease; }
-    .cv-art:hover img { transform: translateY(-4px); }
-
-    /* CV section: light version of the band patterns */
-    .pattern-cv { position: relative; overflow: hidden; isolation: isolate; }
-    .pattern-cv > * { position: relative; z-index: 1; }
-
-    .pattern-cv::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(rgba(0, 0, 0, .13) 1px, transparent 1.5px);
-      background-size: 22px 22px;
-      -webkit-mask-image: linear-gradient(260deg, #000 0%, transparent 55%);
-      mask-image: linear-gradient(260deg, #000 0%, transparent 55%);
-      pointer-events: none;
-      animation: dotsDrift 30s linear infinite;
+    /* Availability band: CV download + conversation link */
+    .banner-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      flex-shrink: 0;
     }
 
-    .pattern-cv::after {
-      content: "";
-      position: absolute;
-      left: -260px;
-      bottom: -300px;
-      width: 720px;
-      height: 720px;
-      border-radius: 50%;
-      background: repeating-radial-gradient(circle, transparent 0 37px, rgba(0, 0, 0, .07) 38px 39px);
-      -webkit-mask-image: radial-gradient(circle, #000 25%, transparent 68%);
-      mask-image: radial-gradient(circle, #000 25%, transparent 68%);
-      pointer-events: none;
-      animation: ringsPulse 9s ease-in-out infinite;
+    .banner-cv {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid #fff;
+      padding: 14px 24px;
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: #fff;
+      background: #111;
+      transition: background-color .25s ease, color .25s ease;
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      .pattern-cv::before, .pattern-cv::after { animation: none; }
+    .banner-cv:hover { background: #fff; color: #111; }
+
+    @media (max-width: 1100px) {
+      .pattern-rings::after { display: none; }
+    }
+    .banner-cv .cv-arrow { transition: transform .25s ease; }
+    .banner-cv:hover .cv-arrow { transform: translateY(2px); }
+
+    .banner-cv:focus-visible {
+      outline: 1px solid #fff;
+      outline-offset: 3px;
+    }
+
+    .banner-meta {
+      font-size: 11px;
+      color: #a3a3a3;
     }
 
     /* Gallery: one highlight at a time, editorial layout */
@@ -688,22 +742,6 @@
       color: #fff;
     }
 
-    .cv-button {
-      transition: background-color .25s ease, color .25s ease;
-    }
-
-    .cv-button:hover {
-      background: #111;
-      color: #fff;
-    }
-
-    .cv-arrow {
-      transition: transform .25s ease;
-    }
-
-    .cv-button:hover .cv-arrow {
-      transform: translateY(2px);
-    }
 
     .project-shot img {
       transition: transform .6s ease;
@@ -755,6 +793,196 @@
       transform: translateY(-4px);
     }
 
+    /* Apps: editorial layout. Big name overlapping a tall image panel, details on the right */
+    .appx { position: relative; display: grid; }
+    .appx-slide {
+      grid-area: 1 / 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 340px 210px;
+      column-gap: 48px;
+      min-height: 600px;
+    }
+    .appx-slide[hidden] { display: grid; visibility: hidden; }
+
+    .appx-intro {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px 24px;
+      margin-bottom: 40px;
+    }
+
+    .appx-left { position: relative; z-index: 2; display: flex; flex-direction: column; }
+    .appx-head { display: flex; align-items: center; gap: 22px; margin-top: 70px; }
+    .appx-num { flex: none; font-size: 12px; font-weight: 700; }
+    .appx-title {
+      font-size: 92px;
+      line-height: .95;
+      letter-spacing: -.045em;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .appx-desc { margin-top: 56px; max-width: 330px; font-size: 13px; line-height: 1.8; color: #404040; }
+    .appx-features { margin: 18px 0 0; padding-left: 16px; max-width: 330px; font-size: 13px; line-height: 1.9; color: #111; }
+    .appx-features li::marker { color: #a3a3a3; }
+
+    .appx-link {
+      align-self: flex-start;
+      margin-top: 34px;
+      padding-bottom: 10px;
+      border-bottom: 1.5px solid #111;
+      font-size: 13px;
+      color: #111;
+      transition: padding-right .3s ease;
+    }
+    .appx-link::after { content: " →"; opacity: 0; transition: opacity .3s ease; }
+    .appx-link:hover { padding-right: 20px; }
+    .appx-link:hover::after { opacity: 1; }
+    .appx-left .project-note { margin-top: 14px; }
+
+    .appx-media {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 150px 34px 0;
+      background: #ececea;
+      overflow: hidden;
+    }
+    .appx-media img {
+      display: block;
+      width: 100%;
+      max-width: 270px;
+      height: auto;
+      margin-bottom: -28%;
+      filter: drop-shadow(0 18px 26px rgba(0, 0, 0, .14));
+      transition: transform .6s ease;
+    }
+    .appx-media:hover img { transform: translateY(-10px); }
+
+    .appx-meta { margin: 0; padding-top: 70px; }
+    .appx-meta div + div { margin-top: 24px; }
+    .appx-meta dt { font-size: 12px; font-weight: 700; color: #111; }
+    .appx-meta dd { margin: 4px 0 0; font-size: 12px; line-height: 1.6; color: #8a8a8a; }
+    .appx-meta dd .live-dot { display: inline-block; margin-right: 8px; vertical-align: 1px; }
+    .appx-demo dd { display: grid; grid-template-columns: 1fr auto; gap: 6px 8px; align-items: center; }
+    .appx-demo code {
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 10.5px;
+      color: #111;
+      overflow-wrap: anywhere;
+      user-select: all;
+    }
+    .appx-demo .project-link { grid-column: 1 / -1; justify-self: start; margin-top: 4px; color: #111; }
+
+    .appx-controls {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 210px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #111;
+      animation: livePulse 2.4s ease-out infinite;
+    }
+    @keyframes livePulse {
+      0% { box-shadow: 0 0 0 0 rgba(17, 17, 17, .35); }
+      80%, 100% { box-shadow: 0 0 0 8px rgba(17, 17, 17, 0); }
+    }
+
+    .copy-btn {
+      border: 1px solid #d4d4d4;
+      background: #fff;
+      padding: 2px 8px;
+      font: inherit;
+      font-size: 9.5px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #525252;
+      cursor: pointer;
+      transition: border-color .2s ease, color .2s ease;
+    }
+    .copy-btn:hover, .copy-btn.is-copied { border-color: #111; color: #111; }
+
+    /* slide change */
+    .appx-slide.is-entering .appx-head { animation: appxTitle .8s cubic-bezier(.2, .7, .2, 1) both; }
+    .appx-slide.is-entering .appx-left > :not(.appx-head),
+    .appx-slide.is-entering .appx-meta { animation: hlFade .7s .1s cubic-bezier(.2, .7, .2, 1) both; }
+    .appx-slide.is-entering .appx-media { animation: hlWipeNext .9s cubic-bezier(.7, 0, .2, 1) both; }
+    .appx-slide.is-entering.from-prev .appx-media { animation-name: hlWipePrev; }
+    @keyframes appxTitle {
+      from { opacity: 0; transform: translateX(-40px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    .appx-mobile {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 16px;
+      padding: 7px 12px;
+      border: 1px solid #e5e5e5;
+      border-radius: 999px;
+      font-size: 11px;
+      letter-spacing: .02em;
+      color: #404040;
+    }
+    .appx-mobile svg { width: 10px; height: 14px; flex: none; }
+    #websiteList > article[hidden] { display: none; }
+
+    .websites-section { background: #fafafa; }
+
+    @media (max-width: 1100px) {
+      .appx-slide { grid-template-columns: minmax(0, 1fr) 300px 180px; column-gap: 32px; }
+      .appx-title { font-size: 72px; }
+      .appx-controls { width: 180px; }
+    }
+
+    @media (max-width: 899px) {
+      .appx-slide {
+        grid-template-columns: minmax(0, 1fr);
+        min-height: 0;
+      }
+      .appx-head { margin-top: 0; gap: 14px; }
+      .appx-title { font-size: 52px; white-space: normal; }
+      .appx-left { display: contents; }
+      .appx-head { order: 1; }
+      .appx-media { order: 2; margin-top: 24px; height: 440px; padding: 40px 24px 0; }
+      .appx-desc { order: 3; margin-top: 28px; max-width: none; }
+      .appx-mobile { margin-top: 14px; }
+      .appx-mobile { order: 3; justify-self: start; }
+      .appx-features { order: 4; max-width: none; }
+      .appx-link { order: 5; justify-self: start; }
+      .appx-left .project-note { order: 6; }
+      .appx-meta { order: 7; padding-top: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px 24px; }
+      .appx-meta div + div { margin-top: 0; }
+      .appx-demo { grid-column: 1 / -1; }
+      .appx-controls {
+        position: static;
+        width: auto;
+        margin-top: 28px;
+        padding-top: 12px;
+        border-top: 1px solid #e5e5e5;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .live-dot { animation: none; }
+      .appx-slide.is-entering .appx-head,
+      .appx-slide.is-entering .appx-left > :not(.appx-head),
+      .appx-slide.is-entering .appx-meta,
+      .appx-slide.is-entering .appx-media { animation: none; }
+    }
+
     /* Page dots under the project list */
     .work-dots {
       display: flex;
@@ -763,8 +991,7 @@
       margin-top: 32px;
     }
 
-    .work-dots[hidden],
-    #projectList > article[hidden] { display: none; }
+    .work-dots[hidden] { display: none; }
 
     /* Scroll animations (classes are added by JS, so the page still works without it) */
     .reveal {
@@ -868,13 +1095,13 @@
   <!-- NAV -->
   <header id="siteHeader" class="site-header fixed inset-x-0 top-0 z-30">
     <div class="mx-auto flex max-w-[1120px] items-center justify-between px-6 py-5 md:px-10">
-      <a href="#" class="text-[25px] font-bold tracking-tight">maredi.</a>
+      <a href="./" id="homeLink" class="text-[25px] font-bold tracking-tight" aria-label="Maredi Manyama, back to top">maredi.</a>
 
       <nav class="hidden items-center gap-7 text-[12px] md:flex lg:gap-9">
         <a href="#about" class="py-3 transition-opacity hover:opacity-50">About</a>
         <a href="#experience" class="py-3 transition-opacity hover:opacity-50">Experience</a>
-        <a href="#projects" class="py-3 transition-opacity hover:opacity-50">Work</a>
-        <a href="#cv" class="py-3 transition-opacity hover:opacity-50">CV</a>
+        <a href="#apps" class="py-3 transition-opacity hover:opacity-50">Apps</a>
+        <a href="#websites" class="py-3 transition-opacity hover:opacity-50">Websites</a>
         <a href="#gallery" class="py-3 transition-opacity hover:opacity-50">Gallery</a>
         <a href="#contact" class="py-3 transition-opacity hover:opacity-50">Contact</a>
       </nav>
@@ -895,8 +1122,8 @@
       <div class="mx-auto max-w-[1120px] px-6 pb-6">
         <a href="#about" class="block border-t border-neutral-200 py-4 text-[22px] tracking-[-0.01em]">About</a>
         <a href="#experience" class="block border-t border-neutral-200 py-4 text-[22px] tracking-[-0.01em]">Experience</a>
-        <a href="#projects" class="block border-t border-neutral-200 py-4 text-[22px] tracking-[-0.01em]">Work</a>
-        <a href="#cv" class="block border-t border-neutral-200 py-4 text-[22px] tracking-[-0.01em]">CV</a>
+        <a href="#apps" class="block border-t border-neutral-200 py-4 text-[22px] tracking-[-0.01em]">Apps</a>
+        <a href="#websites" class="block border-t border-neutral-200 py-4 text-[22px] tracking-[-0.01em]">Websites</a>
         <a href="#gallery" class="block border-t border-neutral-200 py-4 text-[22px] tracking-[-0.01em]">Gallery</a>
         <a href="#contact" class="block border-y border-neutral-200 py-4 text-[22px] tracking-[-0.01em]">Contact</a>
       </div>
@@ -1169,8 +1396,8 @@
       </div>
     </section>
 
-    <!-- BANNER -->
-    <section class="pattern-rings bg-[#111] text-white">
+    <!-- AVAILABILITY -->
+    <section id="availability" class="pattern-rings bg-[#111] text-white">
       <div class="mx-auto flex max-w-[1120px] flex-col gap-8 px-6 py-20 md:flex-row md:items-end md:justify-between md:px-10">
         <div>
           <p class="text-[10px] uppercase tracking-[0.2em] text-neutral-400">Availability</p>
@@ -1182,170 +1409,232 @@
           </p>
         </div>
 
-        <a href="#contact" class="banner-link inline-flex shrink-0 items-center gap-3 py-3 text-[10px] uppercase tracking-[0.2em] text-neutral-400">
-          Start a conversation
-
-          <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
-            <path d="M1 6h9M6.5 2.5 10 6 6.5 9.5" />
-          </svg>
-        </a>
+        <div class="banner-actions">
+          <a href="myCV/MarediManyama_CV.pdf" download="Maredi-Manyama-CV.pdf" class="banner-cv">
+            Download CV
+            <svg class="cv-arrow h-3 w-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+                <path d="M6 1v8M2.5 6 6 9.5 9.5 6M1.5 11h9" />
+              </svg>
+          </a>
+          <p class="banner-meta">PDF · 7 pages · Updated October 2026</p>
+        </div>
       </div>
     </section>
 
-    <!-- SELECTED PROJECTS -->
-    <section id="projects" class="border-b border-neutral-200">
+    <!-- APPS -->
+    <section id="apps" class="border-b border-neutral-200">
+      <div class="mx-auto max-w-[1120px] px-6 py-20 md:px-10">
+        <div class="appx-intro">
+          <p class="text-[10px] uppercase tracking-[0.2em] text-neutral-400">Apps</p>
+          <p class="text-[11px] text-neutral-400">Products I've designed, built and run</p>
+        </div>
+
+        <div id="appsSlider" class="appx" aria-roledescription="carousel" aria-label="Apps">
+          <article id="randroute" class="appx-slide" role="group" aria-roledescription="slide" aria-label="RandRoute, 1 of 3">
+            <div class="appx-left">
+              <div class="appx-head">
+                <span class="appx-num">01.</span>
+                <h3 class="appx-title">RandRoute.</h3>
+              </div>
+              <p class="appx-desc">A budgeting app that turns bank statement data into categorised spending and a clear monthly picture, so people can plan a realistic budget without giving an app live access to their bank.</p>
+              <p class="appx-mobile"><svg viewBox="0 0 12 16" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><rect x="1.5" y="1" width="9" height="14" rx="1.8" /><path d="M5 12.5h2" /></svg>Mobile-first web application · best experienced on your phone</p>
+              <ul class="appx-features">
+                <li>Upload bank statement PDFs</li>
+                <li>Review and categorise transactions</li>
+                <li>See monthly spending and budget remaining</li>
+              </ul>
+              <a href="https://randroute-two.vercel.app/" target="_blank" rel="noreferrer" class="appx-link">Take a look at the app</a>
+            </div>
+
+            <figure class="appx-media">
+              <img src="projects/randroute-phone.webp" alt="RandRoute dashboard on a phone, showing monthly money in, money out and budget remaining" loading="lazy" width="572" height="988" />
+            </figure>
+
+            <dl class="appx-meta">
+              <div>
+                <dt>Stack</dt>
+                <dd>React · Supabase · PWA</dd>
+              </div>
+              <div>
+                <dt>Type</dt>
+                <dd>Personal finance</dd>
+              </div>
+              <div>
+                <dt>Platform</dt>
+                <dd>Mobile-first web app</dd>
+              </div>
+              <div>
+                <dt>Status</dt>
+                <dd><span class="live-dot" aria-hidden="true"></span>Live</dd>
+              </div>
+              <div class="appx-demo">
+                <dt>Demo login</dt>
+                <dd>
+                  <code>kmanyama009+demo@gmail.com</code><button type="button" class="copy-btn" data-copy="kmanyama009+demo@gmail.com">Copy</button>
+                  <code>YexGYGJhLDxvPo-7a</code><button type="button" class="copy-btn" data-copy="YexGYGJhLDxvPo-7a">Copy</button>
+                  <a href="https://randroute-two.vercel.app/sign-in" target="_blank" rel="noreferrer" class="project-link">Open demo sign-in</a>
+                </dd>
+              </div>
+            </dl>
+          </article>
+          <article id="moveinreport" class="appx-slide" role="group" aria-roledescription="slide" aria-label="MoveIn Report, 2 of 3">
+            <div class="appx-left">
+              <div class="appx-head">
+                <span class="appx-num">02.</span>
+                <h3 class="appx-title">MoveIn Report.</h3>
+              </div>
+              <p class="appx-desc">A tool that helps tenants document the condition of a rental room before it costs them their deposit, and share a clear record with their landlord.</p>
+              <p class="appx-mobile"><svg viewBox="0 0 12 16" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><rect x="1.5" y="1" width="9" height="14" rx="1.8" /><path d="M5 12.5h2" /></svg>Mobile-first web application · best experienced on your phone</p>
+              <ul class="appx-features">
+                <li>Area-by-area room inspections</li>
+                <li>Defect photos on every item</li>
+                <li>A shareable PDF report</li>
+              </ul>
+              <a href="https://movein-report.vercel.app/" target="_blank" rel="noreferrer" class="appx-link">Take a look at the app</a>
+            </div>
+
+            <figure class="appx-media">
+              <img src="projects/movein-report-phone.webp" alt="MoveIn Report on a phone: Record your room before it costs you" loading="lazy" width="572" height="988" />
+            </figure>
+
+            <dl class="appx-meta">
+              <div>
+                <dt>Stack</dt>
+                <dd>React · On-device storage · PDF generation · PWA</dd>
+              </div>
+              <div>
+                <dt>Type</dt>
+                <dd>Rental inspections</dd>
+              </div>
+              <div>
+                <dt>Platform</dt>
+                <dd>Mobile-first web app</dd>
+              </div>
+              <div>
+                <dt>Status</dt>
+                <dd><span class="live-dot" aria-hidden="true"></span>Live</dd>
+              </div>
+              <div>
+                <dt>Account</dt>
+                <dd>None needed. Everything stays on the device.</dd>
+              </div>
+            </dl>
+          </article>
+          <article id="jobslip" class="appx-slide" role="group" aria-roledescription="slide" aria-label="JobSlip, 3 of 3">
+            <div class="appx-left">
+              <div class="appx-head">
+                <span class="appx-num">03.</span>
+                <h3 class="appx-title">JobSlip.</h3>
+              </div>
+              <p class="appx-desc">An app that lets South African tradespeople turn a job into a professional job card, quote or invoice, and send it to the customer as a PDF on WhatsApp.</p>
+              <p class="appx-mobile"><svg viewBox="0 0 12 16" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><rect x="1.5" y="1" width="9" height="14" rx="1.8" /><path d="M5 12.5h2" /></svg>Mobile-first web application · best experienced on your phone</p>
+              <ul class="appx-features">
+                <li>Customers and jobs in one place</li>
+                <li>Quotes, job cards and invoices with VAT</li>
+                <li>PDFs on WhatsApp, with payment tracking</li>
+              </ul>
+              <a href="https://jobslip-zeta.vercel.app/" target="_blank" rel="noreferrer" class="appx-link">Take a look at the app</a>
+            </div>
+
+            <figure class="appx-media">
+              <img src="projects/jobslip.webp" alt="JobSlip dashboard on a phone, showing jobs and monthly revenue" loading="lazy" width="572" height="988" />
+            </figure>
+
+            <dl class="appx-meta">
+              <div>
+                <dt>Stack</dt>
+                <dd>React · Supabase · PDF generation · PWA</dd>
+              </div>
+              <div>
+                <dt>Type</dt>
+                <dd>Small-business tool</dd>
+              </div>
+              <div>
+                <dt>Platform</dt>
+                <dd>Mobile-first web app</dd>
+              </div>
+              <div>
+                <dt>Status</dt>
+                <dd><span class="live-dot" aria-hidden="true"></span>Live</dd>
+              </div>
+            </dl>
+          </article>
+
+          <div class="appx-controls">
+            <p class="hl-counter" aria-live="polite"><span id="appsCurrent">01</span> / <span>03</span></p>
+            <div class="hl-arrows">
+              <button type="button" class="hl-arrow" id="appsPrev" aria-label="Previous app">
+                <svg viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M15 6H2M6 1.5 1.5 6 6 10.5" /></svg>
+              </button>
+              <button type="button" class="hl-arrow" id="appsNext" aria-label="Next app">
+                <svg viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M1 6h13M10 1.5 14.5 6 10 10.5" /></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WEBSITES -->
+    <section id="websites" class="websites-section border-b border-neutral-200">
       <div class="mx-auto max-w-[1120px] px-6 py-20 md:px-10">
         <div class="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
-            <p class="text-[10px] uppercase tracking-[0.2em] text-neutral-400">Selected work</p>
-            <h2 class="mt-3 text-[30px] tracking-[-0.02em]">Built and shipped.</h2>
+            <p class="text-[10px] uppercase tracking-[0.2em] text-neutral-400">Websites</p>
+            <h2 class="mt-3 text-[30px] tracking-[-0.02em]">Sites and web tools.</h2>
           </div>
-          <p class="text-[11px] text-neutral-400">Personal products and client work</p>
+          <p class="text-[11px] text-neutral-400">Client work, concepts and academic projects</p>
         </div>
 
-        <div id="projectList" class="divide-y divide-neutral-200 border-y border-neutral-200">
+        <div id="websiteList" class="divide-y divide-neutral-200 border-y border-neutral-200">
 
-          <article id="randroute" class="grid gap-x-10 gap-y-6 py-10 md:grid-cols-[80px_1fr_1fr] md:items-start">
+          <article id="inkwazidigital" class="grid gap-x-10 gap-y-6 py-10 md:grid-cols-[80px_1fr_1fr] md:items-start">
             <span class="text-[11px] text-neutral-400">01</span>
 
-            <a href="https://randroute-two.vercel.app/" target="_blank" rel="noreferrer" class="project-shot project-phone block">
+            <a href="https://inkwazidigital.co.za/" target="_blank" rel="noreferrer" class="project-shot block overflow-hidden border border-neutral-200 bg-neutral-100">
               <img
-                src="projects/randroute-phone.webp"
-                alt="RandRoute dashboard showing budget insights from uploaded bank statements"
+                src="projects/inkwazi-project.webp"
+                alt="Hero image from the Inkwazi Digital website"
                 loading="lazy"
-                class="aspect-[16/10] w-full object-contain"
+                class="aspect-[16/10] w-full object-cover object-top"
               />
-              <span class="phone-note">Mobile-first · Best viewed on a phone</span>
             </a>
 
             <div>
-              <p class="mb-2 text-[10px] uppercase tracking-[0.18em] text-neutral-400">Personal product · Live</p>
-              <h3 class="text-[21px]">RandRoute</h3>
+              <p class="mb-2 text-[10px] uppercase tracking-[0.18em] text-neutral-400">Client project · Live website</p>
+              <h3 class="text-[21px]">Inkwazi Digital</h3>
               <p class="mt-2 text-[12px] leading-5 text-neutral-500">
-                A budgeting app that turns bank statement data into categorised spending and a
-                clear monthly picture, so people can plan a realistic budget.
+                A redesigned website for Inkwazi Digital, a business compliance consultancy and
+                digital solutions provider in KwaMhlanga, making its services easier for
+                entrepreneurs and business owners to find and understand.
               </p>
 
               <dl class="mt-6 space-y-5 text-[12px] leading-5">
                 <div>
-                  <dt class="text-[10px] uppercase tracking-[0.18em] text-neutral-400">The problem</dt>
+                  <dt class="text-[10px] uppercase tracking-[0.18em] text-neutral-400">The brief</dt>
                   <dd class="mt-2 text-neutral-600">
-                    Raw bank statements make spending hard to read. RandRoute turns uploaded
-                    statement data into clear insights without requiring live banking access.
+                    Give the consultancy a clear online presence and explain its CIPC, SARS,
+                    labour and Central Supplier Database support to potential clients.
                   </dd>
                 </div>
                 <div>
-                  <dt class="text-[10px] uppercase tracking-[0.18em] text-neutral-400">What I built</dt>
+                  <dt class="text-[10px] uppercase tracking-[0.18em] text-neutral-400">What I delivered</dt>
                   <dd class="mt-2 text-neutral-600">
-                    A PDF upload flow, a transaction categorisation review, and a dashboard
-                    focused on spending visibility and budget planning.
+                    A responsive business website with a clear service overview, a project showcase
+                    and direct contact options.
                   </dd>
                 </div>
               </dl>
 
               <div class="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-neutral-200 pt-4">
-                <p class="text-[11px] text-neutral-400">PDF import · Spending insights · Budgeting</p>
-                <a href="https://randroute-two.vercel.app/" target="_blank" rel="noreferrer" class="project-link py-2 text-[12px]">View live app</a>
-              </div>
-            </div>
-          </article>
-
-          <article id="moveinreport" class="grid gap-x-10 gap-y-6 py-10 md:grid-cols-[80px_1fr_1fr] md:items-start">
-            <span class="text-[11px] text-neutral-400">02</span>
-
-            <a href="https://movein-report.vercel.app/" target="_blank" rel="noreferrer" class="project-shot project-phone block">
-              <img
-                src="projects/movein-report-phone.webp"
-                alt="MoveIn Report on a phone: Record your room before it costs you"
-                loading="lazy"
-                class="aspect-[16/10] w-full object-contain"
-              />
-              <span class="phone-note">Mobile-first · Best viewed on a phone</span>
-            </a>
-
-            <div>
-              <p class="mb-2 text-[10px] uppercase tracking-[0.18em] text-neutral-400">Personal product · Live</p>
-              <h3 class="text-[21px]">MoveIn Report</h3>
-              <p class="mt-2 text-[12px] leading-5 text-neutral-500">
-                A tool that helps tenants document the condition of a rental room
-                before it costs them their deposit.
-              </p>
-
-              <dl class="mt-6 space-y-5 text-[12px] leading-5">
-                <div>
-                  <dt class="text-[10px] uppercase tracking-[0.18em] text-neutral-400">The problem</dt>
-                  <dd class="mt-2 text-neutral-600">
-                    Tenants rarely have a clear record of a room's condition when moving in or
-                    out, or an easy way to share one with their landlord.
-                  </dd>
-                </div>
-                <div>
-                  <dt class="text-[10px] uppercase tracking-[0.18em] text-neutral-400">What I built</dt>
-                  <dd class="mt-2 text-neutral-600">
-                    Area-by-area inspections with defect photos and a generated PDF report.
-                    Inspections stay on the device: no account is required and no data is
-                    uploaded.
-                  </dd>
-                </div>
-              </dl>
-
-              <div class="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-neutral-200 pt-4">
-                <p class="text-[11px] text-neutral-400">Rental inspections · Photo records · PDF reports</p>
-                <a href="https://movein-report.vercel.app/" target="_blank" rel="noreferrer" class="project-link py-2 text-[12px]">View live app</a>
-              </div>
-            </div>
-          </article>
-
-          <article id="jobslip" class="grid gap-x-10 gap-y-6 py-10 md:grid-cols-[80px_1fr_1fr] md:items-start">
-            <span class="text-[11px] text-neutral-400">03</span>
-
-            <a href="https://jobslip-zeta.vercel.app/" target="_blank" rel="noreferrer" class="project-shot project-phone block">
-              <img
-                src="projects/jobslip.webp"
-                alt="JobSlip dashboard on a phone, showing jobs and monthly revenue"
-                loading="lazy"
-                class="aspect-[16/10] w-full object-contain"
-              />
-              <span class="phone-note">Mobile-first · Best viewed on a phone</span>
-            </a>
-
-            <div>
-              <p class="mb-2 text-[10px] uppercase tracking-[0.18em] text-neutral-400">Personal product · Live</p>
-              <h3 class="text-[21px]">JobSlip</h3>
-              <p class="mt-2 text-[12px] leading-5 text-neutral-500">
-                An app that lets South African tradespeople turn a job into a
-                professional job card, quote or invoice, and send it to the customer as a PDF
-                on WhatsApp.
-              </p>
-
-              <dl class="mt-6 space-y-5 text-[12px] leading-5">
-                <div>
-                  <dt class="text-[10px] uppercase tracking-[0.18em] text-neutral-400">The problem</dt>
-                  <dd class="mt-2 text-neutral-600">
-                    Many tradespeople run their business from a phone and WhatsApp, not desktop
-                    accounting software. JobSlip makes everyday admin practical from the phone,
-                    from the first quote to the final payment.
-                  </dd>
-                </div>
-                <div>
-                  <dt class="text-[10px] uppercase tracking-[0.18em] text-neutral-400">What I built</dt>
-                  <dd class="mt-2 text-neutral-600">
-                    Customer and job management, quotes, invoices with VAT and banking details,
-                    and payment tracking. Before-and-after photos stay on the phone, and the app
-                    installs to the home screen as a PWA.
-                  </dd>
-                </div>
-              </dl>
-
-              <div class="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-neutral-200 pt-4">
-                <p class="text-[11px] text-neutral-400">React · Supabase · PDF generation · PWA</p>
-                <a href="https://jobslip-zeta.vercel.app/" target="_blank" rel="noreferrer" class="project-link py-2 text-[12px]">View live app</a>
+                <p class="text-[11px] text-neutral-400">Website redesign · Business compliance · KwaMhlanga</p>
+                <a href="https://inkwazidigital.co.za/" target="_blank" rel="noreferrer" class="project-link py-2 text-[12px]">View live website</a>
               </div>
             </div>
           </article>
 
           <article id="tcvandemerwe" class="grid gap-x-10 gap-y-6 py-10 md:grid-cols-[80px_1fr_1fr] md:items-start">
-            <span class="text-[11px] text-neutral-400">04</span>
+            <span class="text-[11px] text-neutral-400">02</span>
 
             <a href="https://tc-van-de-merwe.vercel.app/" target="_blank" rel="noreferrer" class="project-shot block overflow-hidden border border-neutral-200 bg-neutral-100">
               <img
@@ -1388,53 +1677,9 @@
             </div>
           </article>
 
-          <article id="inkwazidigital" class="grid gap-x-10 gap-y-6 py-10 md:grid-cols-[80px_1fr_1fr] md:items-start">
-            <span class="text-[11px] text-neutral-400">05</span>
-
-            <a href="https://inkwazidigital.vercel.app/index.html" target="_blank" rel="noreferrer" class="project-shot block overflow-hidden border border-neutral-200 bg-neutral-100">
-              <img
-                src="projects/inkwazi-project.webp"
-                alt="Hero image from the Inkwazi Digital website"
-                loading="lazy"
-                class="aspect-[16/10] w-full object-cover object-top"
-              />
-            </a>
-
-            <div>
-              <p class="mb-2 text-[10px] uppercase tracking-[0.18em] text-neutral-400">Client project · Live website</p>
-              <h3 class="text-[21px]">Inkwazi Digital</h3>
-              <p class="mt-2 text-[12px] leading-5 text-neutral-500">
-                A redesigned website for Inkwazi Digital, a business compliance consultancy and
-                digital solutions provider in KwaMhlanga, making its services easier for
-                entrepreneurs and business owners to find and understand.
-              </p>
-
-              <dl class="mt-6 space-y-5 text-[12px] leading-5">
-                <div>
-                  <dt class="text-[10px] uppercase tracking-[0.18em] text-neutral-400">The brief</dt>
-                  <dd class="mt-2 text-neutral-600">
-                    Give the consultancy a clear online presence and explain its CIPC, SARS,
-                    labour and Central Supplier Database support to potential clients.
-                  </dd>
-                </div>
-                <div>
-                  <dt class="text-[10px] uppercase tracking-[0.18em] text-neutral-400">What I delivered</dt>
-                  <dd class="mt-2 text-neutral-600">
-                    A responsive business website with a clear service overview, a project showcase
-                    and direct contact options.
-                  </dd>
-                </div>
-              </dl>
-
-              <div class="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-neutral-200 pt-4">
-                <p class="text-[11px] text-neutral-400">Website redesign · Business compliance · KwaMhlanga</p>
-                <a href="https://inkwazidigital.vercel.app/index.html" target="_blank" rel="noreferrer" class="project-link py-2 text-[12px]">View live website</a>
-              </div>
-            </div>
-          </article>
 
           <article id="foodscreening" class="grid gap-x-10 gap-y-6 py-10 md:grid-cols-[80px_1fr_1fr] md:items-start">
-            <span class="text-[11px] text-neutral-400">06</span>
+            <span class="text-[11px] text-neutral-400">03</span>
 
             <a href="https://ida117v-screening.onrender.com/" target="_blank" rel="noreferrer" class="project-shot block overflow-hidden border border-neutral-200 bg-neutral-100">
               <img
@@ -1476,58 +1721,16 @@
                 <p class="text-[11px] text-neutral-400">Python · Machine learning · Docker</p>
                 <a href="https://ida117v-screening.onrender.com/" target="_blank" rel="noreferrer" class="project-link py-2 text-[12px]">View live app</a>
               </div>
+              <p class="project-note">Hosted on a free server, so the first visit can take up to a minute to load.</p>
             </div>
           </article>
-
         </div>
-        <div id="projectDots" class="work-dots" role="group" aria-label="Choose project page"></div>
-      </div>
-    </section>
-
-    <!-- CV -->
-    <section id="cv" class="pattern-cv border-b border-neutral-200 bg-neutral-50">
-      <div class="mx-auto grid max-w-[1120px] gap-12 px-6 py-20 md:grid-cols-[.75fr_1.25fr] md:px-10">
-        <div>
-          <p class="text-[10px] uppercase tracking-[0.2em] text-neutral-400">Curriculum vitae</p>
-          <figure class="cv-art">
-            <img
-              src="illustrations/cv-working-together.svg"
-              alt="Illustration of two people sketching ideas on flip charts"
-              width="1159"
-              height="591"
-              loading="lazy"
-            />
-          </figure>
-        </div>
-
-        <div class="cv-text">
-          <h2 class="max-w-[620px] text-[25px] leading-[1.3] tracking-[-0.015em] md:text-[31px]">
-            Take the full story with you.
-          </h2>
-          <p class="mt-6 max-w-[560px] text-[14px] leading-7 text-neutral-600">
-            My CV brings everything on this page into one document: experience, education, skills
-            and projects. It's easy to share with a hiring manager, attach to an application or
-            keep on file.
-          </p>
-          <div class="mt-9 flex flex-wrap items-center gap-x-6 gap-y-4">
-            <a
-              href="myCV/MarediManyama_CV.pdf"
-              download="Maredi-Manyama-CV.pdf"
-              class="cv-button inline-flex items-center gap-3 border border-neutral-900 px-6 py-3 text-[12px] uppercase tracking-[0.14em]"
-            >
-              Download CV
-              <svg class="cv-arrow h-3 w-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
-                <path d="M6 1v8M2.5 6 6 9.5 9.5 6M1.5 11h9" />
-              </svg>
-            </a>
-            <p class="text-[11px] text-neutral-400">PDF · 7 pages · Updated October 2026</p>
-          </div>
-        </div>
+        <div id="websiteDots" class="work-dots" role="group" aria-label="Choose websites page"></div>
       </div>
     </section>
 
     <!-- GALLERY -->
-    <section id="gallery" class="border-b border-neutral-200">
+    <section id="gallery" class="gallery-dark">
       <div class="mx-auto max-w-[1120px] px-6 py-20 md:px-10">
         <div class="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
@@ -1824,7 +2027,7 @@
 
   <!-- BACK TO TOP -->
   <a
-    href="#"
+    href="./"
     id="backToTop"
     aria-label="Back to top"
     class="back-to-top fixed bottom-6 right-6 z-30 flex h-11 w-11 items-center justify-center md:bottom-8 md:right-8"
@@ -1851,6 +2054,7 @@
       toTop.addEventListener('click', function (e) {
         e.preventDefault();
         window.scrollTo({ top: 0, behavior: 'smooth' });
+        if (location.hash) history.replaceState(null, '', location.pathname + location.search);
       });
 
       document.getElementById('currentYear').textContent = new Date().getFullYear();
@@ -1879,6 +2083,29 @@
 
       window.addEventListener('resize', function () {
         if (window.innerWidth >= 768) setMenu(false);
+      });
+
+      // In-page links: scroll smoothly and keep "#" out of the address bar
+      function cleanUrl() {
+        if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+      }
+
+      document.getElementById('homeLink').addEventListener('click', function (e) {
+        e.preventDefault();
+        setMenu(false);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        cleanUrl();
+      });
+
+      document.addEventListener('click', function (e) {
+        if (e.defaultPrevented) return;
+        var link = e.target.closest('a[href^="#"]');
+        if (!link) return;
+        var target = document.querySelector(link.getAttribute('href'));
+        if (!target || target.classList.contains('hl-slide') || target.classList.contains('appx-slide')) return; // slide links open their slide first
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+        cleanUrl();
       });
 
       // Scroll animations: elements fade up (or wipe in) as they enter the screen
@@ -1916,7 +2143,7 @@
       }
 
       // Section headings and intros
-      reveal('section .mb-12, #projects .mb-12, #contact > div > p, #contact h2');
+      reveal('section .mb-12, #contact > div > p, #contact h2');
       reveal('#background > div > div:first-child, section.bg-\\[\\#111\\]:not(#background) > div > *', 'reveal', 120);
       // Groups that come in one after another
       reveal('#work .recognition-card', 'reveal', 120);
@@ -1924,118 +2151,159 @@
       reveal('#about > div > div:last-child > *', 'reveal', 90);
       reveal('#background dl > div', 'reveal', 120);
       reveal('#experience article', 'reveal', 100);
-      reveal('#cv > div > div', 'reveal', 150);
-      reveal('#cv .cv-art', 'reveal-wipe');
       reveal('#highlights', 'reveal');
       reveal('#contact .contact-card', 'reveal', 90);
       // Projects: text fades up, screenshot wipes open from the top
-      reveal('#projectList > article');
-      reveal('#projectList .project-shot', 'reveal-wipe');
+      reveal('#apps .appx-intro');
+      reveal('#appsSlider');
+      reveal('#websiteList > article');
+      reveal('#websiteList .project-shot', 'reveal-wipe');
 
-      // Gallery highlights: arrows, keyboard and swipe move between the 4 slides
-      var hl = document.getElementById('highlights');
-      var hlSlides = Array.prototype.slice.call(hl.querySelectorAll('.hl-slide'));
-      var hlCurrent = document.getElementById('hlCurrent');
-      var hlIndex = 0;
+      // Websites: show 2 at a time, dots switch pages
+      (function () {
+        var PER_PAGE = 2;
+        var list = document.getElementById('websiteList');
+        var dotsWrap = document.getElementById('websiteDots');
+        var sites = Array.prototype.slice.call(list.querySelectorAll(':scope > article'));
+        var pages = Math.ceil(sites.length / PER_PAGE);
+        var dots = [];
+        var current = -1;
 
-      function showHighlight(next, dir) {
-        next = (next + hlSlides.length) % hlSlides.length;
-        hlSlides.forEach(function (slide, i) {
-          slide.hidden = i !== next;
-          slide.classList.remove('is-entering', 'from-prev');
-        });
-        var slide = hlSlides[next];
-        if (dir && motionOk) {
-          void slide.offsetWidth; // restart the animation
-          slide.classList.add('is-entering');
-          if (dir < 0) slide.classList.add('from-prev');
+        function showPage(page) {
+          var changed = current !== -1 && page !== current;
+          current = page;
+          sites.forEach(function (site, i) {
+            var show = Math.floor(i / PER_PAGE) === page;
+            site.hidden = !show;
+            site.classList.remove('project-page-in');
+            if (show && changed && motionOk) {
+              void site.offsetWidth;
+              site.style.setProperty('--reveal-delay', ((i % PER_PAGE) * 110) + 'ms');
+              site.classList.add('project-page-in');
+            }
+          });
+          dots.forEach(function (dot, i) { dot.setAttribute('aria-current', i === page ? 'true' : 'false'); });
         }
-        hlIndex = next;
-        hlCurrent.textContent = (next < 9 ? '0' : '') + (next + 1);
+
+        for (var p = 0; p < pages; p++) {
+          var dot = document.createElement('button');
+          dot.type = 'button';
+          dot.className = 'work-dot';
+          dot.setAttribute('aria-label', 'Show websites page ' + (p + 1));
+          dot.addEventListener('click', (function (page) {
+            return function () {
+              showPage(page);
+              document.getElementById('websites').scrollIntoView({ behavior: 'smooth' });
+            };
+          })(p));
+          dotsWrap.appendChild(dot);
+          dots.push(dot);
+        }
+        dotsWrap.hidden = pages < 2;
+        showPage(0);
+      })();
+
+      // Sliders (apps and gallery): arrows, keyboard and swipe; all slides keep one height
+      function makeSlider(root, counter, prevBtn, nextBtn, slideSelector) {
+        var slides = Array.prototype.slice.call(root.querySelectorAll(slideSelector || '.hl-slide'));
+        var index = 0;
+
+        function show(next, dir) {
+          next = (next + slides.length) % slides.length;
+          slides.forEach(function (slide, i) {
+            slide.hidden = i !== next;
+            slide.classList.remove('is-entering', 'from-prev');
+          });
+          var slide = slides[next];
+          if (dir && motionOk) {
+            void slide.offsetWidth; // restart the animation
+            slide.classList.add('is-entering');
+            if (dir < 0) slide.classList.add('from-prev');
+          }
+          index = next;
+          counter.textContent = (next < 9 ? '0' : '') + (next + 1);
+        }
+
+        prevBtn.addEventListener('click', function () { show(index - 1, -1); });
+        nextBtn.addEventListener('click', function () { show(index + 1, 1); });
+
+        root.addEventListener('keydown', function (e) {
+          if (e.target.closest('a, code')) return;
+          if (e.key === 'ArrowLeft') show(index - 1, -1);
+          if (e.key === 'ArrowRight') show(index + 1, 1);
+        });
+
+        var touchX = null;
+        root.addEventListener('touchstart', function (e) { touchX = e.touches[0].clientX; }, { passive: true });
+        root.addEventListener('touchend', function (e) {
+          if (touchX === null) return;
+          var dx = e.changedTouches[0].clientX - touchX;
+          if (Math.abs(dx) > 50) show(index + (dx < 0 ? 1 : -1), dx < 0 ? 1 : -1);
+          touchX = null;
+        });
+
+        show(0);
+        return {
+          root: root,
+          open: function (slide) {
+            var i = slides.indexOf(slide);
+            if (i === -1) return false;
+            show(i, i === index ? 0 : (i > index ? 1 : -1));
+            return true;
+          }
+        };
       }
 
-      document.getElementById('hlPrev').addEventListener('click', function () { showHighlight(hlIndex - 1, -1); });
-      document.getElementById('hlNext').addEventListener('click', function () { showHighlight(hlIndex + 1, 1); });
+      var sliders = [
+        makeSlider(document.getElementById('highlights'), document.getElementById('hlCurrent'),
+          document.getElementById('hlPrev'), document.getElementById('hlNext'))
+      ];
 
-      hl.addEventListener('keydown', function (e) {
-        if (e.key === 'ArrowLeft') showHighlight(hlIndex - 1, -1);
-        if (e.key === 'ArrowRight') showHighlight(hlIndex + 1, 1);
-      });
+      sliders.push(makeSlider(document.getElementById('appsSlider'), document.getElementById('appsCurrent'),
+        document.getElementById('appsPrev'), document.getElementById('appsNext'), '.appx-slide'));
 
-      var touchX = null;
-      hl.addEventListener('touchstart', function (e) { touchX = e.touches[0].clientX; }, { passive: true });
-      hl.addEventListener('touchend', function (e) {
-        if (touchX === null) return;
-        var dx = e.changedTouches[0].clientX - touchX;
-        if (Math.abs(dx) > 50) showHighlight(hlIndex + (dx < 0 ? 1 : -1), dx < 0 ? 1 : -1);
-        touchX = null;
-      });
-
-      showHighlight(0);
-
-      // Project list: show 3 projects per page, dots switch pages
-      var PER_PAGE = 3;
-      var projectsSection = document.getElementById('projects');
-      var projectDotsWrap = document.getElementById('projectDots');
-      var projects = Array.prototype.slice.call(document.querySelectorAll('#projectList > article'));
-      var projectPages = Math.ceil(projects.length / PER_PAGE);
-      var projectDots = [];
-
-      var currentProjectPage = -1;
-
-      function showProjectPage(page) {
-        var changed = currentProjectPage !== -1 && page !== currentProjectPage;
-        currentProjectPage = page;
-        projects.forEach(function (article, i) {
-          var show = Math.floor(i / PER_PAGE) === page;
-          article.hidden = !show;
-          article.classList.remove('project-page-in');
-          if (show && changed && motionOk) {
-            void article.offsetWidth; // restart the animation
-            article.style.setProperty('--reveal-delay', ((i % PER_PAGE) * 110) + 'ms');
-            article.classList.add('project-page-in');
+      document.querySelectorAll('#apps .copy-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var text = btn.getAttribute('data-copy');
+          var done = function () {
+            btn.textContent = 'Copied';
+            btn.classList.add('is-copied');
+            setTimeout(function () { btn.textContent = 'Copy'; btn.classList.remove('is-copied'); }, 1600);
+          };
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(done, function () {});
+          } else {
+            var range = document.createRange();
+            range.selectNodeContents(btn.previousElementSibling);
+            var sel = window.getSelection();
+            sel.removeAllRanges();
+            sel.addRange(range);
           }
         });
-        projectDots.forEach(function (dot, i) {
-          dot.setAttribute('aria-current', i === page ? 'true' : 'false');
-        });
-      }
+      });
 
-      for (var p = 0; p < projectPages; p++) {
-        var pDot = document.createElement('button');
-        pDot.type = 'button';
-        pDot.className = 'work-dot';
-        pDot.setAttribute('aria-label', 'Show projects page ' + (p + 1));
-        pDot.addEventListener('click', (function (page) {
-          return function () {
-            showProjectPage(page);
-            projectsSection.scrollIntoView({ behavior: 'smooth' });
-          };
-        })(p));
-        projectDotsWrap.appendChild(pDot);
-        projectDots.push(pDot);
-      }
-      projectDotsWrap.hidden = projectPages < 2;
-
-      // Links like #jobslip open the page that holds that project first
-      function openProjectFromHash(hash) {
-        var index = projects.findIndex(function (a) { return '#' + a.id === hash; });
-        if (index === -1) return false;
-        showProjectPage(Math.floor(index / PER_PAGE));
-        projects[index].scrollIntoView({ behavior: 'smooth' });
-        return true;
+      // Links like #jobslip open that app's slide, then scroll to it
+      function openSlide(hash) {
+        var target = hash && hash.length > 1 && document.querySelector(hash);
+        if (!target || !(target.classList.contains('hl-slide') || target.classList.contains('appx-slide'))) return false;
+        for (var i = 0; i < sliders.length; i++) {
+          if (sliders[i].open(target)) {
+            sliders[i].root.scrollIntoView({ behavior: 'smooth' });
+            return true;
+          }
+        }
+        return false;
       }
 
       document.addEventListener('click', function (e) {
         var link = e.target.closest('a[href^="#"]');
-        if (link && openProjectFromHash(link.getAttribute('href'))) {
+        if (link && openSlide(link.getAttribute('href'))) {
           e.preventDefault();
-          history.replaceState(null, '', link.getAttribute('href'));
+          history.replaceState(null, '', location.pathname + location.search);
         }
       });
 
-      showProjectPage(0);
-      if (location.hash) openProjectFromHash(location.hash);
+      if (location.hash) openSlide(location.hash);
     })();
   </script>
 </body>
