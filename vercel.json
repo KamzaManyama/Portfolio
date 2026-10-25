@@ -1,0 +1,16 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/cv", "destination": "/myCV/MarediManyama_CV.pdf", "permanent": false },
+    { "source": "/resume", "destination": "/myCV/MarediManyama_CV.pdf", "permanent": false },
+    { "source": "/gallary/:path*", "destination": "/gallery/:path*", "permanent": true }
+  ],
+  "headers": [
+    {
+      "source": "/404",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex" }]
+    }
+  ]
+}

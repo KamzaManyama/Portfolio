@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page not found — Maredi Manyama</title>
+  <meta name="description" content="This page doesn't exist. Head back to Maredi Manyama's portfolio." />
+  <meta name="robots" content="noindex" />
+  <meta name="theme-color" content="#111111" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR0PMHPVLD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ZR0PMHPVLD');
+  </script>
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body { height: 100%; overflow-x: hidden; }
+
+    body {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      overflow: hidden;
+      background: #111;
+      color: #fff;
+      font-family: Georgia, "Times New Roman", serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* Rings: the same pattern as the Availability band */
+    .rings {
+      position: absolute;
+      top: 50%;
+      right: -260px;
+      width: 900px;
+      height: 900px;
+      margin-top: -450px;
+      border-radius: 50%;
+      background: repeating-radial-gradient(circle, transparent 0 37px, rgba(255, 255, 255, .09) 38px 39px);
+      -webkit-mask-image: radial-gradient(circle, #000 25%, transparent 68%);
+      mask-image: radial-gradient(circle, #000 25%, transparent 68%);
+      pointer-events: none;
+      animation: pulse 9s ease-in-out infinite;
+    }
+
+    .rings::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 8px;
+      height: 8px;
+      margin: -4px 0 0 -4px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .55);
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: .8; }
+      50% { transform: scale(1.05); opacity: 1; }
+    }
+
+    header, main, footer {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    header { padding-top: 28px; }
+    .logo { font-size: 25px; font-weight: 700; letter-spacing: -.01em; }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+
+    .label {
+      font-size: 10px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: #a3a3a3;
+    }
+
+    .code {
+      margin-top: 20px;
+      font-size: clamp(110px, 22vw, 240px);
+      line-height: .85;
+      letter-spacing: -.05em;
+      font-weight: 700;
+    }
+
+    h1 {
+      margin-top: clamp(20px, 3vw, 40px);
+      max-width: 560px;
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 400;
+      line-height: 1.12;
+      letter-spacing: -.025em;
+    }
+
+    .text {
+      margin-top: 18px;
+      max-width: 440px;
+      font-size: 14px;
+      line-height: 1.8;
+      color: #a3a3a3;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px 28px;
+      margin-top: 40px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 24px;
+      border: 1px solid #fff;
+      background: #111;
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      transition: background-color .25s ease, color .25s ease;
+    }
+
+    .button:hover { background: #fff; color: #111; }
+
+    .button svg { width: 12px; height: 12px; transition: transform .25s ease; }
+    .button:hover svg { transform: translateX(-3px); }
+
+    .links { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+
+    .links a {
+      position: relative;
+      padding: 6px 0;
+      font-size: 13px;
+      color: #d4d4d4;
+    }
+
+    .links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 2px;
+      width: 0;
+      height: 1px;
+      background: #fff;
+      transition: width .25s ease;
+    }
+
+    .links a:hover { color: #fff; }
+    .links a:hover::after { width: 100%; }
+
+    a:focus-visible { outline: 1px solid #fff; outline-offset: 4px; }
+
+    footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px 20px;
+      padding-top: 20px;
+      padding-bottom: 28px;
+      border-top: 1px solid #2a2a2a;
+      font-size: 11px;
+      color: #8a8a8a;
+    }
+
+    .fade { animation: fadeUp .7s cubic-bezier(.2, .7, .2, 1) both; }
+    .fade:nth-child(2) { animation-delay: .06s; }
+    .fade:nth-child(3) { animation-delay: .12s; }
+    .fade:nth-child(4) { animation-delay: .18s; }
+    .fade:nth-child(5) { animation-delay: .24s; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    @media (max-width: 640px) {
+      header, main, footer { padding-left: 24px; padding-right: 24px; }
+      .rings { right: -560px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .rings, .fade { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="rings" aria-hidden="true"></div>
+
+  <header>
+    <a href="/" class="logo" aria-label="Maredi Manyama, home">maredi.</a>
+  </header>
+
+  <main>
+    <p class="label fade">Error 404</p>
+    <p class="code fade" aria-hidden="true">404</p>
+    <h1 class="fade">This page doesn't exist.</h1>
+    <p class="text fade">
+      The link may be old, or the address may have a typo. Everything I build is on the
+      home page.
+    </p>
+
+    <div class="actions fade">
+      <a href="/" class="button">
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+          <path d="M11 6H2M5.5 2.5 2 6l3.5 3.5" />
+        </svg>
+        Back to home
+      </a>
+      
+    </div>
+  </main>
+
+  <footer>
+    <span>© <span id="year">2026</span> Maredi Manyama</span>
+    <span>Midrand, South Africa</span>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
