@@ -350,67 +350,101 @@
       .gallery-dark .hl-controls { border-top-color: #2a2a2a; }
     }
 
-    /* About: text, portrait and stack side by side */
-    .vogue { position: relative; overflow: hidden; background: #f3f2ef; }
-    .vogue-inner { position: relative; padding-top: 64px; }
+    /* About: poster layout. Framed portrait, vertical rule, big serif title, sideways line */
+    .poster { position: relative; background: #fff; }
 
-    .vogue-cover {
-      --fw: 280px;
+    .poster-inner { padding-top: 96px; padding-bottom: 96px; }
+
+    .poster-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) var(--fw) minmax(0, 1fr);
-      column-gap: 48px;
+      grid-template-columns: 340px 1px minmax(0, 470px);
+      column-gap: 44px;
+      justify-content: center;
       align-items: center;
     }
 
-    .vogue-figure { grid-column: 2; margin: 0; align-self: end; }
-    .vogue-figure img { display: block; width: 100%; height: auto; filter: grayscale(100%) contrast(1.05); }
+    .poster-frame { background: #2b2b2b; overflow: hidden; }
+    .poster-frame img { display: block; width: 100%; height: auto; filter: grayscale(100%) contrast(.82) brightness(1.12); opacity: .92; }
 
-    .vogue-col { position: relative; }
-    .vogue-left { grid-column: 1; justify-self: end; max-width: 360px; padding-bottom: 64px; }
-    .vogue-right { grid-column: 3; justify-self: start; max-width: 320px; padding-bottom: 64px; }
+    .poster-photo { margin: 0; }
+    .poster-photo figcaption { margin-top: 10px; text-align: center; line-height: 1.5; }
+    .poster-quote { display: block; font-size: 11.5px; font-style: italic; color: #262626; }
+    .poster-by { display: block; margin-top: 2px; font-size: 11px; font-style: italic; color: #111; text-align: right; }
 
-    .vogue-kicker { font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: #8a8a8a; }
-
-    .vogue-headline {
-      margin-top: 14px;
-      font-size: 28px;
-      line-height: 1.18;
-      letter-spacing: -.02em;
-      font-weight: 400;
-      font-style: italic;
-      text-wrap: balance;
+    .poster-rule {
+      align-self: stretch;
+      width: 1px;
+      margin: -56px 0;
+      background: #111;
     }
 
-    .vogue-text { margin-top: 20px; font-size: 13px; line-height: 1.85; color: #525252; }
+    .poster-kicker { font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: #6b6b6b; }
 
-    .vogue-stack { margin: 18px 0 0; display: grid; gap: 16px; }
-    .vogue-stack dt { font-size: 12px; color: #a3a3a3; }
-    .vogue-stack dd { margin: 4px 0 0; font-size: 13px; line-height: 1.6; color: #111; }
-
-    .vogue-cv {
+    .poster-title {
+      position: relative;
       display: inline-block;
-      margin-top: 26px;
+      margin-top: 10px;
       padding-bottom: 6px;
       border-bottom: 1px solid #111;
-      font-size: 12px;
+      font-family: "Didot", "Bodoni 72", "Bodoni MT", Georgia, serif;
+      font-size: 68px;
+      line-height: .92;
+      letter-spacing: -.02em;
+      font-weight: 400;
       color: #111;
-      transition: padding-right .3s ease;
     }
-    .vogue-cv::after { content: " ↓"; }
-    .vogue-cv:hover { padding-right: 12px; }
+
+    .poster-note {
+      display: inline-block;
+      margin-left: 12px;
+      font-family: Georgia, serif;
+      font-size: 11px;
+      font-style: italic;
+      letter-spacing: 0;
+      color: #262626;
+      vertical-align: 6px;
+    }
+
+    .poster-body { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 22px; margin-top: 28px; }
+
+    .poster-side {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      align-self: start;
+      font-size: 10px;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: #111;
+    }
+
+    .poster-para { font-size: 13px; line-height: 1.85; color: #3a3a3a; }
+
+    .poster-stack {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px 22px;
+      margin: 22px 0 0;
+      padding-top: 16px;
+      border-top: 1px solid #c9c8c4;
+    }
+    .poster-stack dt { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: #8a8a8a; }
+    .poster-stack dd { margin: 4px 0 0; font-size: 12px; line-height: 1.55; color: #111; }
+
 
     @media (max-width: 899px) {
-      .vogue-inner { padding-top: 48px; }
-      .vogue-cover { display: flex; flex-direction: column; }
-      .vogue-left { order: 1; max-width: none; padding-bottom: 0; }
-      .vogue-figure { order: 2; width: min(66vw - 32px, 280px); align-self: center; margin-top: 36px; }
-      .vogue-right { order: 3; max-width: none; padding: 36px 0 56px; }
-      .vogue-stack { grid-template-columns: 1fr 1fr; gap: 16px 24px; }
-      .vogue-headline { font-size: 25px; }
+      .poster-inner { padding-top: 64px; padding-bottom: 64px; }
+      .poster-grid { grid-template-columns: minmax(0, 1fr); row-gap: 32px; }
+      .poster-photo { order: 1; max-width: 340px; width: 100%; justify-self: center; }
+      .poster-rule { order: 2; width: auto; height: 1px; margin: 0; }
+      .poster-text { order: 3; }
+      .poster-title { font-size: 52px; }
+      .poster-body { grid-template-columns: minmax(0, 1fr); }
+      .poster-side { writing-mode: horizontal-tb; transform: none; }
     }
 
     @media (max-width: 479px) {
-      .vogue-stack { grid-template-columns: 1fr; }
+      .poster-stack { grid-template-columns: 1fr; }
+      .poster-note { display: block; margin: 8px 0 0; vertical-align: 0; }
     }
 
     /* Patterns on the black bands */
@@ -1255,55 +1289,51 @@
     </section>
 
     <!-- ABOUT -->
-    <section id="about" class="vogue border-b border-neutral-200">
-      <div class="vogue-inner mx-auto max-w-[1120px] px-6 md:px-10">
-
-        <div class="vogue-cover">
-          <div class="vogue-col vogue-left">
-            <p class="vogue-kicker">Who I am</p>
-            <h2 class="vogue-headline">I build practical software around the people who use it.</h2>
-            <p class="vogue-text">
-              I'm naturally curious about how things work, and I care about the people behind the
-              problems. That shapes how I build: software that is practical, easy to use and
-              thoughtfully put together. A Tshwane University of Technology alumnus now completing
-              an Advanced Diploma in Computer Science, I work mainly with JavaScript, React and
-              Node.js, and I'm growing into mobile development, accessibility and software quality,
-              with one goal: technology products that make a lasting difference in South Africa and
-              across Africa.
-            </p>
-          </div>
-
-          <figure class="vogue-figure">
-            <img
-              src="about-portrait.webp"
-              alt="Maredi Manyama standing in a white T-shirt, black beanie and brown trousers"
-              width="381"
-              height="945"
-              loading="lazy"
-            />
+    <section id="about" class="poster border-b border-neutral-200">
+      <div class="poster-inner mx-auto max-w-[1120px] px-6 md:px-10">
+        <div class="poster-grid">
+          <figure class="poster-photo">
+            <div class="poster-frame">
+              <img
+                src="about-poster.webp"
+                alt="Maredi Manyama in a bucket hat, working at a laptop"
+                width="1024"
+                height="1280"
+                loading="lazy"
+              />
+            </div>
+            <figcaption>
+              <span class="poster-quote">“I build practical software around the people who use it.”</span>
+              <!-- <span class="poster-by">Maredi Manyama</span> -->
+            </figcaption>
           </figure>
 
-          <div class="vogue-col vogue-right">
-            <p class="vogue-kicker">Tech stack</p>
-            <dl class="vogue-stack">
-              <div>
-                <dt>Frontend</dt>
-                <dd>React, JavaScript, TypeScript, HTML &amp; CSS, Tailwind CSS, Redux, Bootstrap</dd>
+          <span class="poster-rule" aria-hidden="true"></span>
+
+          <div class="poster-text">
+            <p class="poster-kicker">Who I am</p>
+            <h2 class="poster-title">Maredi<br />Manyama<span class="poster-note">Software developer, Midrand</span></h2>
+
+            <div class="poster-body">
+              <!-- <p class="poster-side">Curious by nature · practical by design</p> -->
+
+              <div class="poster-main">
+                <p class="poster-para">
+                  I'm naturally curious about how things work, and I care about the people behind
+                  the problems. That shapes how I build: software that is practical, easy to use and
+                  thoughtfully put together. A Tshwane University of Technology alumnus now completing
+                  an Advanced Diploma in Computer Science, I work mainly with JavaScript, React and
+                  Node.js, and I'm growing into mobile development, accessibility and software quality.
+                </p>
+
+                <dl class="poster-stack" aria-label="Tech stack">
+                  <div><dt>Frontend</dt><dd>React, JavaScript, TypeScript, HTML &amp; CSS, Tailwind CSS, Redux, Bootstrap</dd></div>
+                  <div><dt>Backend</dt><dd>Node.js, Express, REST APIs, MySQL, PostgreSQL, Supabase</dd></div>
+                  <div><dt>Quality</dt><dd>Playwright, Jest, end-to-end, regression and integration testing</dd></div>
+                  <div><dt>Tools</dt><dd>Git, GitHub Actions</dd></div>
+                </dl>
               </div>
-              <div>
-                <dt>Backend</dt>
-                <dd>Node.js, Express, REST APIs, MySQL, PostgreSQL, Supabase</dd>
-              </div>
-              <div>
-                <dt>Quality</dt>
-                <dd>Playwright, Jest, end-to-end, regression and integration testing</dd>
-              </div>
-              <div>
-                <dt>Tools</dt>
-                <dd>Git, GitHub Actions, Azure DevOps, Jira, CI/CD</dd>
-              </div>
-            </dl>
-            <a href="myCV/MarediManyama_CV.pdf" download="Maredi-Manyama-CV.pdf" class="vogue-cv">Full story in my CV</a>
+            </div>
           </div>
         </div>
       </div>
@@ -2180,8 +2210,8 @@
       reveal('#background > div > div:first-child, section.bg-\\[\\#111\\]:not(#background) > div > *', 'reveal', 120);
       // Groups that come in one after another
       reveal('#work .recognition-card', 'reveal', 120);
-      reveal('#about .vogue-figure', 'reveal', 120);
-      reveal('#about .vogue-col > *', 'reveal', 80);
+      reveal('#about .poster-photo', 'reveal');
+      reveal('#about .poster-text > *', 'reveal', 80);
       reveal('#background dl > div', 'reveal', 120);
       reveal('#experience article', 'reveal', 100);
       reveal('#highlights', 'reveal');
